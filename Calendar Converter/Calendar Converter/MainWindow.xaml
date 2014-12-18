@@ -11,7 +11,7 @@
 		<Label Content="New Start Date" HorizontalAlignment="Left" Height="31" Margin="465,66,0,0" VerticalAlignment="Top" Width="125"/>
 		<TextBox x:Name="txtbxNumWeeks" HorizontalAlignment="Left" Height="30" Margin="640,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" />
 		<Label Content="Number of Weeks" HorizontalAlignment="Left" Height="30" Margin="465,111,0,0" VerticalAlignment="Top" Width="125"/>
-		<Button Content="Button" HorizontalAlignment="Left" Height="26" Margin="640,162,0,0" VerticalAlignment="Top" Width="156"/>
+		<Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Left" Height="26" Margin="640,162,0,0" VerticalAlignment="Top" Width="156"/>
 		<Label Content="Label" HorizontalAlignment="Left" Height="68" Margin="79,248,0,0" VerticalAlignment="Top" Width="78"  BorderThickness="2,1,2,2" BorderBrush="Black" />
 		<Label Content="Label" HorizontalAlignment="Left" Height="68" Margin="162,248,0,0" VerticalAlignment="Top" Width="78" BorderThickness="2,1,2,2" BorderBrush="Black"/>
 		<Label Content="Label" HorizontalAlignment="Left" Height="68" Margin="245,248,0,0" VerticalAlignment="Top" Width="78" BorderThickness="2,1,2,2" BorderBrush="Black"/>
@@ -40,5 +40,9 @@
 		<Label Content="Label" HorizontalAlignment="Left" Height="28" Margin="411,350.1,0,0" VerticalAlignment="Top" Width="78"  BorderThickness="2,2,2,0" BorderBrush="Black" />
 		<Label Content="Label" HorizontalAlignment="Left" Height="28" Margin="494,350.1,0,0" VerticalAlignment="Top" Width="78"  BorderThickness="2,2,2,0" BorderBrush="Black" />
 		<Label Content="Label" HorizontalAlignment="Left" Height="28" Margin="577,350.1,0,0" VerticalAlignment="Top" Width="78"  BorderThickness="2,2,2,0" BorderBrush="Black" />
-	</Grid>
+        <RadioButton x:Name="rbSkipbreak" Content="Skip Breaks" HorizontalAlignment="Left" Height="19" Margin="465,141,0,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks"/>
+        <RadioButton x:Name="rbNoskip" Content="Do Not Skip Breaks" HorizontalAlignment="Left" Height="19" Margin="465,160,0,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks"/>
+        <Button x:Name="btnNext" Content="Next" HorizontalAlignment="Left" Height="26" Margin="723,473,0,0" VerticalAlignment="Top" Width="73"/>
+        <Button x:Name="btnPrevious" Content="Previous" HorizontalAlignment="Left" Height="26" Margin="640,473,0,0" VerticalAlignment="Top" Width="78"/>
+    </Grid>
 </Window>
