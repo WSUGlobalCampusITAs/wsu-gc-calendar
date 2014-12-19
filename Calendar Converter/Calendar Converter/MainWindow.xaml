@@ -10,7 +10,7 @@
 		<Label Content="New Start Date" HorizontalAlignment="Right" Height="31" Margin="0,66,216,0" VerticalAlignment="Top" Width="125"/>
 		<TextBox x:Name="txtbxNumWeeks" HorizontalAlignment="Right" Height="19" Margin="0,111,10,0" VerticalAlignment="Top" Width="26" TextAlignment="Center"/>
 		<Label Content="Number of Weeks" HorizontalAlignment="Right" Height="23" Margin="0,107,216,0" VerticalAlignment="Top" Width="125"/>
-		<Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Right" Height="26" Margin="0,162,10,0" VerticalAlignment="Top" Width="156" Background="#FFBD7964"/>
+		<Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Right" Height="26" Margin="0,162,10,0" VerticalAlignment="Top" Width="156" Background="#FFBD7964" Click="BtnUpdate_Click"/>
         <RadioButton  x:Name="rbSkipbreak" Content="Skip Breaks" HorizontalAlignment="Right" Height="19" Margin="0,141,211,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks"/>
         <RadioButton  x:Name="rbNoskip" Content="Do Not Skip Breaks" HorizontalAlignment="Right" Height="19" Margin="0,160,211,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks" IsChecked="True"/>
         <Button x:Name="btnNext" Content="Next" Margin="0,0,10,9" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="73"/>

@@ -12,13 +12,21 @@ namespace Calendar_Converter
         private DateTime memSemStart;
         private DateTime memSemEnd;
         private int memNumWeeks;
+        private bool memIsBreak;
+        private List<Week> memWeeks;
 
         //Constructor for Semester Class
-        public Semester(DateTime SemesterStart, int NumberofWeeks)
+        public Semester(DateTime SemesterStart, int NumberofWeeks, bool Break)
         {
             memSemStart = SemesterStart;
-            memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0);
+            memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0 - 1);
             memNumWeeks = NumberofWeeks;
+            memWeeks = new List<Week>();
+            memIsBreak = Break;
+            for(int i = 0; i < memNumWeeks; i++)
+            {
+                memWeeks.Add(new Week(memSemStart, (i + 1), false));
+            }
         }
 
         //Setters and Getters
@@ -29,6 +37,11 @@ namespace Calendar_Converter
         public DateTime SemesterEnd
         {
             get { return memSemEnd; }
+        }
+
+        public List<string> GetWeek(int WeekNumber)
+        {
+            return memWeeks[WeekNumber - 1].Dates;
         }
     }
 }
