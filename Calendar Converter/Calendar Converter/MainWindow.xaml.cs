@@ -24,5 +24,10 @@ namespace Calendar_Converter
         {
             InitializeComponent();
         }
+
+        private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	// TODO: Add event handler implementation here.
+        }
     }
 }
