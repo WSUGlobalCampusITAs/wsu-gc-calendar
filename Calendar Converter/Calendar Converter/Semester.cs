@@ -14,18 +14,19 @@ namespace Calendar_Converter
         private int memNumWeeks;
         private int memBreakWeek;
         private List<Week> memSemesterWeeks;
+        private bool memIsBreak;
 
         //Constructor for Semester Class
-        public Semester(DateTime SemesterStart, int NumberofWeeks)
+        public Semester(DateTime SemesterStart, int NumberofWeeks, bool Break)
         {
             memSemStart = SemesterStart;
-            memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0);
+            memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0 - 1);
             memNumWeeks = NumberofWeeks;
-            if(memSemStart.Month <= 11 && memSemEnd.Month >= 11)
+            if (memSemStart.Month <= 11 && memSemEnd.Month >= 11)
             {
                 memBreakWeek = 1;
                 DateTime BreakFinder = memSemStart;
-                while(BreakFinder.DayOfYear < memSemEnd.DayOfYear)
+                while (BreakFinder.DayOfYear < memSemEnd.DayOfYear)
                 {
                     if (BreakFinder.DayOfYear >= Thanksgiving(BreakFinder.Year).DayOfYear)
                     {
@@ -33,25 +34,35 @@ namespace Calendar_Converter
                     }
                     memBreakWeek++;
                     BreakFinder.AddDays(7);
-                    
+
                 }
-                if(memBreakWeek >= NumberofWeeks)
+                if (memBreakWeek >= NumberofWeeks)
                 {
                     memBreakWeek = -1;
                 }
             }
             else
             {
-                if(memSemStart.Month <= 3 && memSemEnd.Month >= 3)
+                if (memSemStart.Month <= 3 && memSemEnd.Month >= 3)
                 {
                     memBreakWeek = 10;
                 }
             }
-
-            for (int i = 0; i < NumberofWeeks; i++ )
+            
+            memSemesterWeeks = new List<Week>();
+            memIsBreak = Break;
+            for (int i = 0; i < memNumWeeks; i++)
             {
-
+                if ((i + 1) == memBreakWeek)
+                {
+                    memSemesterWeeks.Add(new Week(memSemStart, (i + 1), true));
+                }
+                else
+                {
+                    memSemesterWeeks.Add(new Week(memSemStart, (i + 1), false));
+                }
             }
+            
         }
 
         //Setters and Getters
@@ -84,6 +95,11 @@ namespace Calendar_Converter
             //Use the combination of Take and Last to get the 4th thursday of the month
             thanksgiving = (from d in november where d.DayOfWeek == thursdays orderby d.Day ascending select d).Take(4).Last();
             return thanksgiving;
+        }
+
+        public List<string> GetWeek(int WeekNumber)
+        {
+            return memSemesterWeeks[WeekNumber - 1].Dates;
         }
     }
 }
