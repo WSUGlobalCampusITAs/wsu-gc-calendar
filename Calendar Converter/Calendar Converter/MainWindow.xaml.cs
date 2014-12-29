@@ -1,4 +1,18 @@
-﻿using System;
+﻿//  Copyright 2014 Washington State University
+
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+
+//     http://www.apache.org/licenses/LICENSE-2.0
+
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +44,9 @@ namespace Calendar_Converter
         private Semester memOldSem;
         private int memNewWeekNumber;
         private int memOldWeekNumber;
-
+        /// <summary>
+        /// Default Constructor for MainWindow
+        /// </summary>
         public MainWindow()
         {
             memNewWeekNumber = 1;
@@ -144,7 +160,7 @@ namespace Calendar_Converter
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if(memNewWeekNumber < memNumWeeks)
+            if(memNewWeekNumber < memNumWeeks && memOldWeekNumber < memNumWeeks)
             {
                 memNewWeekNumber++;
                 memOldWeekNumber++;
@@ -154,7 +170,7 @@ namespace Calendar_Converter
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
-            if(memNewWeekNumber > 1)
+            if(memNewWeekNumber > 1 && memOldWeekNumber > 1)
             {
                 memNewWeekNumber--;
                 memOldWeekNumber--;

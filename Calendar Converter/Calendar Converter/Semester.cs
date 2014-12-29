@@ -1,4 +1,18 @@
-﻿using System;
+﻿//  Copyright 2014 Washington State University
+
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+
+//     http://www.apache.org/licenses/LICENSE-2.0
+
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,21 +30,42 @@ namespace Calendar_Converter
         private List<Week> memSemesterWeeks;
         private bool memIsBreak;
 
-        //Constructor for Semester Class
+        /// <summary>
+        /// Constructor for the Semester Class. This constructor creates a 
+        /// Semester Class object, and procedes to populate it with the weeks of the
+        /// semester. It also caluclates where breaks are located and sets them to their
+        /// respective places. 
+        /// </summary>
+        /// <param name="SemesterStart"></param>
+        /// <param name="NumberofWeeks"></param>
+        /// <param name="Break"></param>
         public Semester(DateTime SemesterStart, int NumberofWeeks, bool Break)
         {
             memSemStart = SemesterStart;
             memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0 - 1);
             memNumWeeks = NumberofWeeks;
+
+            //First check to see if the breaks are to be taken. 
             if (Break)
             {
+                DateTime BreakDate;
+                //Next check to see if November is contained within Semester.
                 if (memSemStart.Month <= 11 && memSemEnd.Month >= 11)
                 {
+                    BreakDate = Thanksgiving(memSemStart.Year);
+                }
+                else
+                {
+                    //If the semester contains spring break use the 10th week for spring break. 
+                    BreakDate = new DateTime(memSemStart.Year, 1, 1);
+                    BreakDate = BreakDate.AddDays(11 * 7 - 1);
+                }
                     memBreakWeek = 1;
                     DateTime BreakFinder = memSemStart.Date;
+                    //Calculate the break week by finding which week Thanksgiving falls in. 
                     while (BreakFinder.DayOfYear < memSemEnd.DayOfYear)
                     {
-                        if (BreakFinder.DayOfYear >= Thanksgiving(BreakFinder.Year).DayOfYear)
+                        if (BreakFinder.DayOfYear >= BreakDate.DayOfYear)
                         {
                             memBreakWeek--;
                             break;
@@ -43,14 +78,7 @@ namespace Calendar_Converter
                     {
                         memBreakWeek = -1;
                     }
-                }
-                else
-                {
-                    if (memSemStart.Month <= 3 && memSemEnd.Month >= 3)
-                    {
-                        memBreakWeek = 10;
-                    }
-                }
+                
             }
             memSemesterWeeks = new List<Week>();
             memIsBreak = Break;
