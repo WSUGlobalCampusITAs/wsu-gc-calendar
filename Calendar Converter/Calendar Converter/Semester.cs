@@ -22,33 +22,36 @@ namespace Calendar_Converter
             memSemStart = SemesterStart;
             memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0 - 1);
             memNumWeeks = NumberofWeeks;
-            if (memSemStart.Month <= 11 && memSemEnd.Month >= 11)
+            if (Break)
             {
-                memBreakWeek = 1;
-                DateTime BreakFinder = memSemStart;
-                while (BreakFinder.DayOfYear < memSemEnd.DayOfYear)
+                if (memSemStart.Month <= 11 && memSemEnd.Month >= 11)
                 {
-                    if (BreakFinder.DayOfYear >= Thanksgiving(BreakFinder.Year).DayOfYear)
+                    memBreakWeek = 1;
+                    DateTime BreakFinder = memSemStart.Date;
+                    while (BreakFinder.DayOfYear < memSemEnd.DayOfYear)
                     {
-                        break;
-                    }
-                    memBreakWeek++;
-                    BreakFinder.AddDays(7);
+                        if (BreakFinder.DayOfYear >= Thanksgiving(BreakFinder.Year).DayOfYear)
+                        {
+                            memBreakWeek--;
+                            break;
+                        }
+                        memBreakWeek++;
+                        BreakFinder = BreakFinder.AddDays(7);
 
+                    }
+                    if (memBreakWeek >= NumberofWeeks)
+                    {
+                        memBreakWeek = -1;
+                    }
                 }
-                if (memBreakWeek >= NumberofWeeks)
+                else
                 {
-                    memBreakWeek = -1;
+                    if (memSemStart.Month <= 3 && memSemEnd.Month >= 3)
+                    {
+                        memBreakWeek = 10;
+                    }
                 }
             }
-            else
-            {
-                if (memSemStart.Month <= 3 && memSemEnd.Month >= 3)
-                {
-                    memBreakWeek = 10;
-                }
-            }
-            
             memSemesterWeeks = new List<Week>();
             memIsBreak = Break;
             for (int i = 0; i < memNumWeeks; i++)

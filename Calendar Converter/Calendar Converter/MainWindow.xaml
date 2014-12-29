@@ -13,8 +13,8 @@
 		<Button x:Name="BtnUpdate" Content="Update" HorizontalAlignment="Right" Height="26" Margin="0,162,10,0" VerticalAlignment="Top" Width="156" Background="#FFBD7964" Click="BtnUpdate_Click"/>
         <RadioButton  x:Name="rbSkipbreak" Content="Skip Breaks" HorizontalAlignment="Right" Height="19" Margin="0,141,211,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks"/>
         <RadioButton  x:Name="rbNoskip" Content="Do Not Skip Breaks" HorizontalAlignment="Right" Height="19" Margin="0,160,211,0" VerticalAlignment="Top" Width="130" Checked="RadioButton_Checked" GroupName="Breaks" IsChecked="True"/>
-        <Button x:Name="btnNext" Content="Next" Margin="0,0,10,9" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="73"/>
-        <Button x:Name="btnPrevious" Content="Previous" Margin="0,0,88,9" HorizontalAlignment="Right" Width="78" Height="26" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnNext" Content="Next" Margin="0,0,10,9" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="73" Click="btnNext_Click"/>
+        <Button x:Name="btnPrevious" Content="Previous" Margin="0,0,88,9" HorizontalAlignment="Right" Width="78" Height="26" VerticalAlignment="Bottom" Click="btnPrevious_Click"/>
         <Grid Margin="10,229,10,42">
         	<Grid.RowDefinitions>
         		<RowDefinition Height="26*"/>

@@ -28,11 +28,13 @@ namespace Calendar_Converter
         private List<string> memOldSemList;
         private Semester memNewSem;
         private Semester memOldSem;
-        private int memWeekNumber;
+        private int memNewWeekNumber;
+        private int memOldWeekNumber;
 
         public MainWindow()
         {
-            memWeekNumber = 1;
+            memNewWeekNumber = 1;
+            memOldWeekNumber = 1;
             InitializeComponent();
         }
 
@@ -50,6 +52,8 @@ namespace Calendar_Converter
 
         private void BtnUpdate_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            memNewWeekNumber = 1;
+            memOldWeekNumber = 1;
             if (dtpickOldStart.SelectedDate.HasValue)
             {
                 memOldSemStart = dtpickOldStart.SelectedDate.Value;
@@ -61,6 +65,10 @@ namespace Calendar_Converter
                     if (IsInt(txtbxNumWeeks.Text))
                     {
                         memNumWeeks = Convert.ToInt32(txtbxNumWeeks.Text);
+                        if (memBreak)
+                        {
+                            memNumWeeks++;
+                        }
                         updateCalendar();
                     }
                 }
@@ -99,11 +107,23 @@ namespace Calendar_Converter
 
         private void updateCalendar()
         {
+            
             memNewSem = new Semester(memNewSemStart, memNumWeeks, memBreak);
             memOldSem = new Semester(memOldSemStart, memNumWeeks, memBreak);
 
-            memNewSemList = memNewSem.GetWeek(memWeekNumber);
-            memOldSemList = memOldSem.GetWeek(memWeekNumber);
+            memNewSemList = memNewSem.GetWeek(memNewWeekNumber);
+            memOldSemList = memOldSem.GetWeek(memOldWeekNumber);
+
+            if(memOldSemList[0] == "Break")
+            {
+                memOldWeekNumber++;
+                memOldSemList = memOldSem.GetWeek(memOldWeekNumber);
+            }
+            if(memNewSemList[0] == "Break")
+            {
+                memOldWeekNumber--;
+                memOldSemList = memNewSem.GetWeek(memNewWeekNumber);
+            }
 
             tblkOldMonday.Text = memOldSemList[0];
             tblkOldTuesday.Text = memOldSemList[1];
@@ -120,6 +140,26 @@ namespace Calendar_Converter
             tblkNewFriday.Text = memNewSemList[4];
             tblkNewSaturday.Text = memNewSemList[5];
             tblkNewSunday.Text = memNewSemList[6];
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            if(memNewWeekNumber < memNumWeeks)
+            {
+                memNewWeekNumber++;
+                memOldWeekNumber++;
+                updateCalendar();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            if(memNewWeekNumber > 1)
+            {
+                memNewWeekNumber--;
+                memOldWeekNumber--;
+                updateCalendar();
+            }
         }
 
     }

@@ -51,8 +51,16 @@ namespace Calendar_Converter
 
                 while(currentDate.CompareTo(memWeekEnd) <= 0)
                 {
-                    Dates.Add(currentDate.ToShortDateString());
-                    currentDate = currentDate.AddDays(1);
+                    if (memIsBreak)
+                    {
+                        Dates.Add("Break");
+                        currentDate = currentDate.AddDays(1);
+                    }
+                    else
+                    {
+                        Dates.Add(currentDate.ToShortDateString());
+                        currentDate = currentDate.AddDays(1);
+                    }
                 }
 
                 return Dates;
