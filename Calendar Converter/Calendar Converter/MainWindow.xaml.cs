@@ -30,7 +30,10 @@ using System.Windows.Shapes;
 namespace Calendar_Converter
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml, this file has had the program logic seperated from
+    /// it into the logic engine file to improve flexibility and maintenance. This seperation includes
+    /// specifying an interface for the output and input of data from the logic engine. The current setup uses 
+    /// the Week class as the input object type, and outputs using 2 DateTime objects, a boolean, and an int. 
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -52,6 +55,10 @@ namespace Calendar_Converter
             memEngine.PropertyChanged += memEngine_PropertyChanged;
 
             InitializeComponent();
+
+            //The following block of code sets lists to contain the form's TextBlocks
+            //This allows the TextBlocks to be iteratively populated, as well as reducing 
+            //the complexity of other sections of code. 
 
             OldSemester = new List<TextBlock>();
             NewSemester = new List<TextBlock>();
@@ -93,7 +100,13 @@ namespace Calendar_Converter
 
         }
 
-        //Event handler for updates to the calendar. 
+        /// <summary>
+        /// The memEngine_PropertyChanged event handler is the method that reacts to the 
+        /// event within the logic engine that lets the user interface know to update its textblocks. 
+        /// this update is used for initializing the calendar, as well as switching between weeks. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void memEngine_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             int i = 0;
@@ -122,6 +135,11 @@ namespace Calendar_Converter
             }
         }
 
+        /// <summary>
+        /// Event handler for switching between Breaks counted or not. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
         	if(rbSkipbreak.IsChecked == true)
@@ -134,6 +152,12 @@ namespace Calendar_Converter
             }
         }
 
+        /// <summary>
+        /// Event handler for the Update button. This button initiates the intialization of the 
+        /// calendar. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnUpdate_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             DateTime memOldSemStart = new DateTime(), memNewSemStart = new DateTime();
@@ -166,6 +190,12 @@ namespace Calendar_Converter
 
         }
 
+        /// <summary>
+        /// This private method is used to catch exceptions if the number of weeks textbox 
+        /// does not contain an integer. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private bool IsInt(string input)
         {
             int numVal = 0;
@@ -187,12 +217,21 @@ namespace Calendar_Converter
         }
 
 
-
+        /// <summary>
+        /// Next button event handler. Used to call the Next function of the logic engine. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             memEngine.Next();
         }
 
+        /// <summary>
+        /// Previous button event handler. Used to call the Previous function of the logic engine. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
             memEngine.Previous();

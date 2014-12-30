@@ -136,16 +136,29 @@ namespace Calendar_Converter
             return thanksgiving;
         }
 
+        /// <summary>
+        /// Method for returning the dates of a given week in a string list format
+        /// </summary>
+        /// <param name="WeekNumber"></param>
+        /// <returns></returns>
         public List<string> GetWeek(int WeekNumber)
         {
             return memSemesterWeeks[WeekNumber - 1].Dates;
         }
 
+        /// <summary>
+        /// Method for returning the dates of a given week in a DateTime format. 
+        /// </summary>
+        /// <param name="WeekNumber"></param>
+        /// <returns></returns>
         public List<DateTime> GetDates(int WeekNumber)
         {
             return memSemesterWeeks[WeekNumber - 1].DateList;
         }
 
+        /// <summary>
+        /// Public getter for returning the collection of weeks within a semester. 
+        /// </summary>
         public List<Week> Weeks
         {
             get { return memSemesterWeeks; }

@@ -100,8 +100,10 @@ namespace Calendar_Converter
                 }
             }
 
-            memOldSemester.Weeks.Remove(toBeRemoved);
+                memOldSemester.Weeks.Remove(toBeRemoved);
+            
 
+            toBeRemoved = new Week();
             foreach(Week week in memNewSemester.Weeks)
             {
                 if(week.IsBreak)
@@ -110,7 +112,11 @@ namespace Calendar_Converter
                 }
             }
 
-            memOldSemester.Weeks.Insert(memNewSemester.Weeks.IndexOf(toBeRemoved), toBeRemoved);
+            if (toBeRemoved.WeekStart.Year > 1985)
+            {
+                memOldSemester.Weeks.Insert(memNewSemester.Weeks.IndexOf(toBeRemoved), toBeRemoved);
+            }
+            
         }
 
     }
