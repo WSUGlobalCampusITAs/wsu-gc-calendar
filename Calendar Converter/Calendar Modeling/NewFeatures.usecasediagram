@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="bb9ac66d-0fad-40cd-93b0-74a646f3991b" name="NewFeatures" linkedPackageId="6f42c131-5c86-4df5-967c-8ad68d7a528a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="f3fdeaad-7791-4b3c-ac32-0430406ec957">
+      <profileInstance Id="d315dbb0-b4c1-433e-a8c3-ebb3f71ce9ea" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f7ac4032-cefc-43e4-b2e7-8de7b268133e">
+      <profileInstance Id="d6a4d15f-a077-4395-8477-764aac0e6fc9" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="794d8016-40ee-4a9d-a3c8-d02d618fd2cb" name="ITA" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d31f2a4b-2024-42c8-8cc9-58abf287347e" />
+        <targetEnds>
+          <association Id="9da175a9-3caa-4cf4-8831-56ebf71833d6" isDerived="false" sourceEndRoleName="ITA" targetEndRoleName="Manual Semester Date Conversion" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4c7d60e0-6760-4f3e-8b53-72bd604447c4" LastKnownName="Manual Semester Date Conversion" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="39554dff-e445-458b-9d16-3b164f45449f" name="ITA" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="225442f8-489c-43af-a39b-669d298c96ad" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0cbeb0dc-ceb6-4c56-9620-573cf039381e" name="Manual Semester Date Conversion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bca1e5f5-56ba-45c9-8fb3-b69b10eccce0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6ee4bf2a-f3f3-47da-ba1e-21b993c17acd" />
+          </association>
+          <association Id="ee4df744-f260-4fc6-8b57-ab16a69f9291" isDerived="false" sourceEndRoleName="ITA" targetEndRoleName="Auto Date Conversion" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b50f145b-be88-48ab-8b45-d3dea19f945a" LastKnownName="Auto Date Conversion" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="12bc1dc2-1d42-469c-8292-311073dddb43" name="ITA" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="738ee058-bcb9-456c-98db-d26cda6e09f8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="651da86f-430d-4a8f-84b5-ce941aca3855" name="Auto Date Conversion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="85910a2f-e378-4187-9f97-786b6d83563e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c78ae0b2-6558-426f-8fbd-ba6359046272" />
+          </association>
+          <association Id="a0044207-6e41-42bd-a141-767dbf6e9095" isDerived="false" sourceEndRoleName="ITA" targetEndRoleName="Individual Date Conversion" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c3adefd9-96ab-40f1-8530-38c4d5f78c6b" LastKnownName="Individual Date Conversion" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb51599d-759a-41c3-92a9-dd9585791710" name="ITA" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4a2b5cfd-9e90-4ff3-825a-894a2a9b7c02" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0d70bbad-2851-435d-b859-fc042359892d" name="Individual Date Conversion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c3c8dc5e-35c3-4014-a6f8-1c166ce5c4f4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="002dc22f-6b24-4eb3-bdab-13d41f616fe6" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4c7d60e0-6760-4f3e-8b53-72bd604447c4" name="Manual Semester Date Conversion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="67413c33-a722-402a-925e-0908c7ed0e97" />
+        <subjects>
+          <subsystemMoniker Id="994dea4d-b6b3-46e9-84d2-41276508349d" LastKnownName="Calendar Converter" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="994dea4d-b6b3-46e9-84d2-41276508349d" name="Calendar Converter" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="484c66c4-88c4-4b62-9c4c-74da34266220" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="b50f145b-be88-48ab-8b45-d3dea19f945a" name="Auto Date Conversion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="af0ef8aa-9c79-4055-9c1a-7af173efcd86" />
+        <targetEnds>
+          <association Id="8a119877-9389-4aea-ab64-dff2dca852a3" isDerived="false" sourceEndRoleName="Auto Date Conversion" targetEndRoleName="Html Table to Excell Converter" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="92fb3e30-3ad7-4fd5-ba3b-d6a1329069a1" LastKnownName="Html Table to Excell Converter" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="538473bf-5aa7-4b2b-b5f8-8268721ed9cd" name="Auto Date Conversion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="23f399dd-1f83-41a9-be61-a7dbd15caba9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2bd4b509-9e5e-4a2e-8732-b545cd776abf" name="Html Table to Excell Converter" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7227f839-4caa-4a20-acff-d1e878ce3ef2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9083fa2e-7e2a-4c7c-82ab-85d170926c57" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="994dea4d-b6b3-46e9-84d2-41276508349d" LastKnownName="Calendar Converter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="c3adefd9-96ab-40f1-8530-38c4d5f78c6b" name="Individual Date Conversion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="38651e4b-bb17-4e8f-986f-32cc34fede19" />
+        <subjects>
+          <subsystemMoniker Id="994dea4d-b6b3-46e9-84d2-41276508349d" LastKnownName="Calendar Converter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="92fb3e30-3ad7-4fd5-ba3b-d6a1329069a1" name="Html Table to Excell Converter" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3ace915e-b4f1-4287-96de-8a14137b9bf8" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="644751d2-8979-42b6-b95e-333039b7a393" name="Convert From Blackboard" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5d1b2e9a-ddfd-45a3-8eb7-23a84d8fcee9" />
+        <subjects>
+          <subsystemMoniker Id="92fb3e30-3ad7-4fd5-ba3b-d6a1329069a1" LastKnownName="Html Table to Excell Converter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a11cebad-5aaa-4f32-b471-b2af16b2151e" name="Convert to Blackboard" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ed80d96d-4259-4768-a8e6-60efa84552b0" />
+        <subjects>
+          <subsystemMoniker Id="92fb3e30-3ad7-4fd5-ba3b-d6a1329069a1" LastKnownName="Html Table to Excell Converter" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="7aba6adc-05a7-4643-8e84-765064085b2e" name="ITA" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="563a85fc-2df9-4297-bca1-b29e6a757d6b" />
+        <targetEnds>
+          <association Id="d62cbd6c-b58a-4d5b-be1d-8de29c271d30" isDerived="false" sourceEndRoleName="ITA" targetEndRoleName="Convert From Blackboard" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="644751d2-8979-42b6-b95e-333039b7a393" LastKnownName="Convert From Blackboard" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="afa5b62b-d86c-4801-b128-800c7189a2f1" name="ITA" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="74d35f66-1e2c-445c-b419-1d24c5ba440e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d06ceb2-352a-4ee3-8400-f6dcee450877" name="Convert From Blackboard" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a7d82a39-7910-4f15-a162-5f87224c405b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="20521a25-45b6-4375-a77d-abcf57cd8951" />
+          </association>
+          <association Id="2bf7a584-6599-4c8f-a544-1277111050e7" isDerived="false" sourceEndRoleName="ITA" targetEndRoleName="Convert to Blackboard" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a11cebad-5aaa-4f32-b471-b2af16b2151e" LastKnownName="Convert to Blackboard" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="84c1aa81-1094-4e36-88b5-8c19100b7340" name="ITA" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="08de03b6-aa2c-49ff-9ff6-e1ccc3cabcd3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7c216828-3f3e-493f-9c62-17cad16a3ec4" name="Convert to Blackboard" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ecc58794-7376-4d16-be11-a83f323df660" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1cbb4e4d-d0f7-425d-bbf1-ffd9b008832a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="6f42c131-5c86-4df5-967c-8ad68d7a528a" name="Calendar Modeling">
+    <elementDefinition Id="f7712939-967b-434d-b430-f2d2366a21b6" />
+  </package>
+</useCaseModelRoot>

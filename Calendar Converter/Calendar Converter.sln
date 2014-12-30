@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar Converter", "Calen
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Calendar Modeling", "Calendar Modeling\Calendar Modeling.modelproj", "{76D28408-DC8B-426B-8E82-04CB98845D28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseDates", "ParseDates\ParseDates.csproj", "{6D2D58A7-2A37-4F21-A142-A41CF5352F58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{76D28408-DC8B-426B-8E82-04CB98845D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76D28408-DC8B-426B-8E82-04CB98845D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76D28408-DC8B-426B-8E82-04CB98845D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D2D58A7-2A37-4F21-A142-A41CF5352F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2D58A7-2A37-4F21-A142-A41CF5352F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2D58A7-2A37-4F21-A142-A41CF5352F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2D58A7-2A37-4F21-A142-A41CF5352F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

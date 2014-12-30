@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using ParseDates;
 
 namespace Calendar_Converter
 {
@@ -20,6 +21,8 @@ namespace Calendar_Converter
         private Semester memNewSemester;
         private int memCurrentWeek;
         private int memNumWeeks;
+
+        
 
         //Event for user interface to subscribe to. 
         public event PropertyChangedEventHandler PropertyChanged;

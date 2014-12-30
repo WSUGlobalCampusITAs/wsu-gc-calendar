@@ -59,7 +59,7 @@ namespace Calendar_Converter
             //The following block of code sets lists to contain the form's TextBlocks
             //This allows the TextBlocks to be iteratively populated, as well as reducing 
             //the complexity of other sections of code. 
-
+            //IEnumerable<DateTime> test = ParseDates.Dates.Parse(@"C:\Users\David\Source\Repos\wsu-gc-calendar\Calendar Converter\res00002.xml");
             OldSemester = new List<TextBlock>();
             NewSemester = new List<TextBlock>();
             NewDates = new List<TextBlock>();
@@ -96,8 +96,15 @@ namespace Calendar_Converter
             OldDates.Add(tblkOldFriday);
             OldDates.Add(tblkOldSaturday);
             OldDates.Add(tblkOldSunday);
-
-
+           
+            int i = 0;
+            //if(test.Any())
+            //     {
+                    
+            //                tblkOldMonday.Text = test.First().ToLongTimeString();
+                       
+            //     }
+            
         }
 
         /// <summary>

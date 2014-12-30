@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="f7712939-967b-434d-b430-f2d2366a21b6"
   name="Calendar Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -500,6 +500,375 @@
           </generalization>
         </generalsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="9ff72c6a-6982-4922-a10c-f4d905320ac4"
+        name="Instructor"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="d31f2a4b-2024-42c8-8cc9-58abf287347e"
+        name="ITA"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="6ee4bf2a-f3f3-47da-ba1e-21b993c17acd"
+            isDerived="false"
+            sourceEndRoleName="ITA"
+            targetEndRoleName="Manual Semester Date Conversion"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="67413c33-a722-402a-925e-0908c7ed0e97"
+              LastKnownName="Manual Semester Date Conversion"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="225442f8-489c-43af-a39b-669d298c96ad"
+                  name="ITA"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bca1e5f5-56ba-45c9-8fb3-b69b10eccce0"
+                  name="Manual Semester Date Conversion"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c78ae0b2-6558-426f-8fbd-ba6359046272"
+            isDerived="false"
+            sourceEndRoleName="ITA"
+            targetEndRoleName="Auto Date Conversion"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="af0ef8aa-9c79-4055-9c1a-7af173efcd86"
+              LastKnownName="Auto Date Conversion"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="738ee058-bcb9-456c-98db-d26cda6e09f8"
+                  name="ITA"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="85910a2f-e378-4187-9f97-786b6d83563e"
+                  name="Auto Date Conversion"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="002dc22f-6b24-4eb3-bdab-13d41f616fe6"
+            isDerived="false"
+            sourceEndRoleName="ITA"
+            targetEndRoleName="Individual Date Conversion"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="38651e4b-bb17-4e8f-986f-32cc34fede19"
+              LastKnownName="Individual Date Conversion"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4a2b5cfd-9e90-4ff3-825a-894a2a9b7c02"
+                  name="ITA"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c3c8dc5e-35c3-4014-a6f8-1c166ce5c4f4"
+                  name="Individual Date Conversion"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="efccb206-2734-45b8-8e0a-952a5bcbecae"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="67413c33-a722-402a-925e-0908c7ed0e97"
+        name="Manual Semester Date Conversion"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="484c66c4-88c4-4b62-9c4c-74da34266220"
+            LastKnownName="Calendar Converter"
+            LastKnownLocation="Calendar Modeling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="b0649c81-c24c-4fbf-9a45-e86a1ab524bf"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="484c66c4-88c4-4b62-9c4c-74da34266220"
+        name="Calendar Converter"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="af0ef8aa-9c79-4055-9c1a-7af173efcd86"
+        name="Auto Date Conversion"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9083fa2e-7e2a-4c7c-82ab-85d170926c57"
+            isDerived="false"
+            sourceEndRoleName="Auto Date Conversion"
+            targetEndRoleName="Html Table to Excell Converter"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="3ace915e-b4f1-4287-96de-8a14137b9bf8"
+              LastKnownName="Html Table to Excell Converter"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="23f399dd-1f83-41a9-be61-a7dbd15caba9"
+                  name="Auto Date Conversion"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7227f839-4caa-4a20-acff-d1e878ce3ef2"
+                  name="Html Table to Excell Converter"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="484c66c4-88c4-4b62-9c4c-74da34266220"
+            LastKnownName="Calendar Converter"
+            LastKnownLocation="Calendar Modeling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="38651e4b-bb17-4e8f-986f-32cc34fede19"
+        name="Individual Date Conversion"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="484c66c4-88c4-4b62-9c4c-74da34266220"
+            LastKnownName="Calendar Converter"
+            LastKnownLocation="Calendar Modeling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="cf9ddfe2-b3be-4059-b779-7b20c8b37ee6"
+        name="Actor1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="3ace915e-b4f1-4287-96de-8a14137b9bf8"
+        name="Html Table to Excell Converter"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5d1b2e9a-ddfd-45a3-8eb7-23a84d8fcee9"
+        name="Convert From Blackboard"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="3ace915e-b4f1-4287-96de-8a14137b9bf8"
+            LastKnownName="Html Table to Excell Converter"
+            LastKnownLocation="Calendar Modeling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ed80d96d-4259-4768-a8e6-60efa84552b0"
+        name="Convert to Blackboard"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="3ace915e-b4f1-4287-96de-8a14137b9bf8"
+            LastKnownName="Html Table to Excell Converter"
+            LastKnownLocation="Calendar Modeling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="563a85fc-2df9-4297-bca1-b29e6a757d6b"
+        name="ITA"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="20521a25-45b6-4375-a77d-abcf57cd8951"
+            isDerived="false"
+            sourceEndRoleName="ITA"
+            targetEndRoleName="Convert From Blackboard"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5d1b2e9a-ddfd-45a3-8eb7-23a84d8fcee9"
+              LastKnownName="Convert From Blackboard"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="74d35f66-1e2c-445c-b419-1d24c5ba440e"
+                  name="ITA"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a7d82a39-7910-4f15-a162-5f87224c405b"
+                  name="Convert From Blackboard"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1cbb4e4d-d0f7-425d-bbf1-ffd9b008832a"
+            isDerived="false"
+            sourceEndRoleName="ITA"
+            targetEndRoleName="Convert to Blackboard"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="ed80d96d-4259-4768-a8e6-60efa84552b0"
+              LastKnownName="Convert to Blackboard"
+              LastKnownLocation="Calendar Modeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="08de03b6-aa2c-49ff-9ff6-e1ccc3cabcd3"
+                  name="ITA"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ecc58794-7376-4d16-be11-a83f323df660"
+                  name="Convert to Blackboard"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
