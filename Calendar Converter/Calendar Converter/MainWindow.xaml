@@ -72,20 +72,20 @@
             <Rectangle Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
             <Rectangle Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True"/>
             <Rectangle Fill="#FF555595"  Stroke="Black" d:IsLocked="True" />
-            <TextBlock TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Text="Wednesday" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Friday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Saturday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="5" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
-            <TextBlock TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" Grid.Row="2" FontFamily="Times New Roman" FontSize="16" d:IsLocked="True"/>
+            <TextBlock x:Name="tblkOld0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld1" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld2" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew1" TextWrapping="Wrap" Text="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld3" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew2" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Text="Wednesday" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld4" TextWrapping="Wrap" Text="Friday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew3" TextWrapping="Wrap" Text="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld5" TextWrapping="Wrap" Text="Saturday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew4" TextWrapping="Wrap" Text="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkOld6" TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew5" TextWrapping="Wrap" Text="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="5" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock x:Name="tblkNew6" TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" Grid.Row="2" FontFamily="Times New Roman" FontSize="16"/>
             <TextBlock x:Name="tblkOldMonday" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="21.333"/>
             <TextBlock x:Name="tblkOldTuesday" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="21.333"/>
             <TextBlock x:Name="tblkOldWednesday" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="21.333"/>

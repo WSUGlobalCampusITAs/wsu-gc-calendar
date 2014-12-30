@@ -58,7 +58,7 @@ namespace Calendar_Converter
                 {
                     //If the semester contains spring break use the 10th week for spring break. 
                     BreakDate = new DateTime(memSemStart.Year, 1, 1);
-                    BreakDate = BreakDate.AddDays(11 * 7 - 1);
+                    BreakDate = BreakDate.AddDays(11 * 7 - 1); //11 weeks from start of year contains the week of spring break
                 }
                     memBreakWeek = 1;
                     DateTime BreakFinder = memSemStart.Date;
@@ -131,6 +131,16 @@ namespace Calendar_Converter
         public List<string> GetWeek(int WeekNumber)
         {
             return memSemesterWeeks[WeekNumber - 1].Dates;
+        }
+
+        public List<DateTime> GetDates(int WeekNumber)
+        {
+            return memSemesterWeeks[WeekNumber - 1].DateList;
+        }
+
+        public List<Week> Weeks
+        {
+            get { return memSemesterWeeks; }
         }
     }
 }

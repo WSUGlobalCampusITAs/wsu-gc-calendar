@@ -44,6 +44,10 @@ namespace Calendar_Converter
         private Semester memOldSem;
         private int memNewWeekNumber;
         private int memOldWeekNumber;
+        private List<TextBlock> OldSemester;
+        private List<TextBlock> NewSemester;
+        private List<DateTime> memNewSemDates;
+        private List<DateTime> memOldSemDates;
         /// <summary>
         /// Default Constructor for MainWindow
         /// </summary>
@@ -52,6 +56,26 @@ namespace Calendar_Converter
             memNewWeekNumber = 1;
             memOldWeekNumber = 1;
             InitializeComponent();
+
+            OldSemester = new List<TextBlock>();
+            NewSemester = new List<TextBlock>();
+
+            OldSemester.Add(tblkOld0);
+            OldSemester.Add(tblkOld1);
+            OldSemester.Add(tblkOld2);
+            OldSemester.Add(tblkOld3);
+            OldSemester.Add(tblkOld4);
+            OldSemester.Add(tblkOld5);
+            OldSemester.Add(tblkOld6);
+
+            NewSemester.Add(tblkNew0);
+            NewSemester.Add(tblkNew1);
+            NewSemester.Add(tblkNew2);
+            NewSemester.Add(tblkNew3);
+            NewSemester.Add(tblkNew4);
+            NewSemester.Add(tblkNew5);
+            NewSemester.Add(tblkNew6);
+
         }
 
         private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
@@ -123,12 +147,14 @@ namespace Calendar_Converter
 
         private void updateCalendar()
         {
-            
+            int i;
             memNewSem = new Semester(memNewSemStart, memNumWeeks, memBreak);
             memOldSem = new Semester(memOldSemStart, memNumWeeks, memBreak);
 
             memNewSemList = memNewSem.GetWeek(memNewWeekNumber);
             memOldSemList = memOldSem.GetWeek(memOldWeekNumber);
+            memNewSemDates = memNewSem.GetDates(memNewWeekNumber);
+            memOldSemDates = memOldSem.GetDates(memOldWeekNumber);
 
             if(memOldSemList[0] == "Break")
             {
@@ -141,6 +167,18 @@ namespace Calendar_Converter
                 memOldSemList = memNewSem.GetWeek(memNewWeekNumber);
             }
 
+            i = 0;
+            foreach(TextBlock blk in OldSemester)
+            {
+                blk.Text = memOldSemDates[i].DayOfWeek.ToString();
+                i++;
+            }
+            i = 0;
+            foreach (TextBlock blk in NewSemester)
+            {
+                blk.Text = memNewSemDates[i].DayOfWeek.ToString();
+                i++;
+            }
             tblkOldMonday.Text = memOldSemList[0];
             tblkOldTuesday.Text = memOldSemList[1];
             tblkOldWednesday.Text = memOldSemList[2];

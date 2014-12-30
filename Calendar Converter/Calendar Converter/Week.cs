@@ -22,10 +22,18 @@ namespace Calendar_Converter
 {
     class Week
     {
-        private int memWeekNumber;
-        private DateTime memWeekStart;
-        private DateTime memWeekEnd;
-        private bool memIsBreak;
+        protected int memWeekNumber {get; set;}
+        protected DateTime memWeekStart { get; set; }
+        protected DateTime memWeekEnd { get; set; }
+        protected bool memIsBreak { get; set; }
+
+        public Week()
+        {
+            memWeekNumber = 0;
+            memWeekStart = new DateTime();
+            memWeekEnd = new DateTime();
+            memIsBreak = false;
+        }
 
         public Week(DateTime SemesterStart, int WeekNumber, bool IsBreak)
         {
@@ -79,6 +87,38 @@ namespace Calendar_Converter
 
                 return Dates;
             }
+        }
+
+        public List<DateTime> DateList
+        {
+            get
+            {
+                DateTime currentDate = memWeekStart.Date;
+                List<DateTime> Dates = new List<DateTime>();
+
+                while (currentDate.CompareTo(memWeekEnd) <= 0)
+                {
+                    Dates.Add(currentDate);
+                    currentDate = currentDate.AddDays(1);
+                }
+
+                return Dates;
+            }
+        }
+    }
+
+    class Break : Week
+    {
+        protected string memBreakName;
+
+        public Break() { }
+        public Break(DateTime BreakStart, DateTime BreakEnd, string BreakName)
+        {
+            this.memBreakName = BreakName;
+            this.memIsBreak = true;
+            this.memWeekStart = BreakStart.Date;
+            this.memWeekEnd = BreakEnd.Date;
+
         }
     }
 }
