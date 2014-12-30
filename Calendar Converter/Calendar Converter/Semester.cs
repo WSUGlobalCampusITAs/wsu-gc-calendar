@@ -86,7 +86,7 @@ namespace Calendar_Converter
             {
                 if ((i + 1) == memBreakWeek)
                 {
-                    memSemesterWeeks.Add(new Week(memSemStart, (i + 1), true));
+                    memSemesterWeeks.Add(new Break(memSemStart, (i+1), "Break"));
                 }
                 else
                 {

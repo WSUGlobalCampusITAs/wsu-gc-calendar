@@ -34,31 +34,29 @@ namespace Calendar_Converter
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DateTime memOldSemStart;
-        private DateTime memNewSemStart;
-        private bool memBreak;
-        private int memNumWeeks;
-        private List<string> memNewSemList;
-        private List<string> memOldSemList;
-        private Semester memNewSem;
-        private Semester memOldSem;
-        private int memNewWeekNumber;
-        private int memOldWeekNumber;
+
         private List<TextBlock> OldSemester;
         private List<TextBlock> NewSemester;
-        private List<DateTime> memNewSemDates;
-        private List<DateTime> memOldSemDates;
+        private List<TextBlock> OldDates;
+        private List<TextBlock> NewDates;
+        private LogicEngine memEngine;
+        private bool memBreak;
         /// <summary>
         /// Default Constructor for MainWindow
         /// </summary>
         public MainWindow()
         {
-            memNewWeekNumber = 1;
-            memOldWeekNumber = 1;
+            memEngine = new LogicEngine();
+            memBreak = false;
+
+            memEngine.PropertyChanged += memEngine_PropertyChanged;
+
             InitializeComponent();
 
             OldSemester = new List<TextBlock>();
             NewSemester = new List<TextBlock>();
+            NewDates = new List<TextBlock>();
+            OldDates = new List<TextBlock>();
 
             OldSemester.Add(tblkOld0);
             OldSemester.Add(tblkOld1);
@@ -76,6 +74,52 @@ namespace Calendar_Converter
             NewSemester.Add(tblkNew5);
             NewSemester.Add(tblkNew6);
 
+            NewDates.Add(tblkNewMonday);
+            NewDates.Add(tblkNewTuesday);
+            NewDates.Add(tblkNewWednesday);
+            NewDates.Add(tblkNewThursday);
+            NewDates.Add(tblkNewFriday);
+            NewDates.Add(tblkNewSaturday);
+            NewDates.Add(tblkNewSunday);
+
+            OldDates.Add(tblkOldMonday);
+            OldDates.Add(tblkOldTuesday);
+            OldDates.Add(tblkOldWednesday);
+            OldDates.Add(tblkOldThursday);
+            OldDates.Add(tblkOldFriday);
+            OldDates.Add(tblkOldSaturday);
+            OldDates.Add(tblkOldSunday);
+
+
+        }
+
+        //Event handler for updates to the calendar. 
+        void memEngine_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            int i = 0;
+            foreach (TextBlock blk in NewDates)
+            {
+                blk.Text = memEngine.NewWeek.Dates[i];
+                i++;
+            }
+            i = 0;
+            foreach (TextBlock blk in OldDates)
+            {
+                blk.Text = memEngine.OldWeek.Dates[i];
+                i++;
+            }
+            i = 0;
+            foreach (TextBlock blk in NewSemester)
+            {
+                blk.Text = memEngine.NewWeek.DateList[i].DayOfWeek.ToString();
+                i++;
+            }
+            i = 0;
+            foreach (TextBlock blk in OldSemester)
+            {
+                blk.Text = memEngine.OldWeek.DateList[i].DayOfWeek.ToString();
+                i++;
+            }
         }
 
         private void RadioButton_Checked(object sender, System.Windows.RoutedEventArgs e)
@@ -92,8 +136,8 @@ namespace Calendar_Converter
 
         private void BtnUpdate_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            memNewWeekNumber = 1;
-            memOldWeekNumber = 1;
+            DateTime memOldSemStart = new DateTime(), memNewSemStart = new DateTime();
+            int memNumWeeks;
             if (dtpickOldStart.SelectedDate.HasValue)
             {
                 memOldSemStart = dtpickOldStart.SelectedDate.Value;
@@ -109,7 +153,8 @@ namespace Calendar_Converter
                         {
                             memNumWeeks++;
                         }
-                        updateCalendar();
+                        memEngine.Semesters(memOldSemStart, memNewSemStart, memNumWeeks, memBreak);
+
                     }
                 }
                 else
@@ -145,75 +190,16 @@ namespace Calendar_Converter
             }
         }
 
-        private void updateCalendar()
-        {
-            int i;
-            memNewSem = new Semester(memNewSemStart, memNumWeeks, memBreak);
-            memOldSem = new Semester(memOldSemStart, memNumWeeks, memBreak);
 
-            memNewSemList = memNewSem.GetWeek(memNewWeekNumber);
-            memOldSemList = memOldSem.GetWeek(memOldWeekNumber);
-            memNewSemDates = memNewSem.GetDates(memNewWeekNumber);
-            memOldSemDates = memOldSem.GetDates(memOldWeekNumber);
-
-            if(memOldSemList[0] == "Break")
-            {
-                memOldWeekNumber++;
-                memOldSemList = memOldSem.GetWeek(memOldWeekNumber);
-            }
-            if(memNewSemList[0] == "Break")
-            {
-                memOldWeekNumber--;
-                memOldSemList = memNewSem.GetWeek(memNewWeekNumber);
-            }
-
-            i = 0;
-            foreach(TextBlock blk in OldSemester)
-            {
-                blk.Text = memOldSemDates[i].DayOfWeek.ToString();
-                i++;
-            }
-            i = 0;
-            foreach (TextBlock blk in NewSemester)
-            {
-                blk.Text = memNewSemDates[i].DayOfWeek.ToString();
-                i++;
-            }
-            tblkOldMonday.Text = memOldSemList[0];
-            tblkOldTuesday.Text = memOldSemList[1];
-            tblkOldWednesday.Text = memOldSemList[2];
-            tblkOldThursday.Text = memOldSemList[3];
-            tblkOldFriday.Text = memOldSemList[4];
-            tblkOldSaturday.Text = memOldSemList[5];
-            tblkOldSunday.Text = memOldSemList[6];
-
-            tblkNewMonday.Text = memNewSemList[0];
-            tblkNewTuesday.Text = memNewSemList[1];
-            tblkNewWednesday.Text = memNewSemList[2];
-            tblkNewThursday.Text = memNewSemList[3];
-            tblkNewFriday.Text = memNewSemList[4];
-            tblkNewSaturday.Text = memNewSemList[5];
-            tblkNewSunday.Text = memNewSemList[6];
-        }
 
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            if(memNewWeekNumber < memNumWeeks && memOldWeekNumber < memNumWeeks)
-            {
-                memNewWeekNumber++;
-                memOldWeekNumber++;
-                updateCalendar();
-            }
+            memEngine.Next();
         }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
-            if(memNewWeekNumber > 1 && memOldWeekNumber > 1)
-            {
-                memNewWeekNumber--;
-                memOldWeekNumber--;
-                updateCalendar();
-            }
+            memEngine.Previous();
         }
 
     }

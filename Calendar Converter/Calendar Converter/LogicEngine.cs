@@ -47,6 +47,8 @@ namespace Calendar_Converter
         {
             memOldSemester = new Semester(OldSemesterStart, NumWeeks, Breaks);
             memNewSemester = new Semester(NewSemesterStart, NumWeeks, Breaks);
+            memOldWeek = memOldSemester.Weeks[memCurrentWeek];
+            memNewWeek = memNewSemester.Weeks[memCurrentWeek];
             LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Semester Update"));
         }
 
@@ -66,6 +68,7 @@ namespace Calendar_Converter
             {
                 memCurrentWeek++;
                 memNewWeek = memNewSemester.Weeks[memCurrentWeek];
+                memOldWeek = memOldSemester.Weeks[memCurrentWeek];
                 LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Next"));
             }
            
@@ -75,6 +78,9 @@ namespace Calendar_Converter
         {
             if (memCurrentWeek > 1)
             {
+                memCurrentWeek--;
+                memNewWeek = memNewSemester.Weeks[memCurrentWeek];
+                memOldWeek = memOldSemester.Weeks[memCurrentWeek];
                 LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Previous"));
             }
         }

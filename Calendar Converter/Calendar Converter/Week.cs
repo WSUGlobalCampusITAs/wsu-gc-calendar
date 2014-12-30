@@ -112,12 +112,12 @@ namespace Calendar_Converter
         protected string memBreakName;
 
         public Break() { }
-        public Break(DateTime BreakStart, DateTime BreakEnd, string BreakName)
+        public Break(DateTime SemesterStart, int WeekNumber, string BreakName)
         {
             this.memBreakName = BreakName;
             this.memIsBreak = true;
-            this.memWeekStart = BreakStart.Date;
-            this.memWeekEnd = BreakEnd.Date;
+            this.memWeekStart = SemesterStart.Date.AddDays((WeekNumber - 1) * 7);
+            this.memWeekEnd = memWeekStart.AddDays(7);
 
         }
     }
