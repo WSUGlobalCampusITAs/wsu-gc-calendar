@@ -82,6 +82,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogicEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Semester.cs" />
     <Compile Include="Week.cs" />
     <Page Include="MainWindow.xaml">
