@@ -44,30 +44,33 @@ namespace Calendar_Converter
             memSemStart = SemesterStart;
             memSemEnd = SemesterStart.AddDays(NumberofWeeks * 7.0 - 1);
             memNumWeeks = NumberofWeeks;
-
+            string BreakName = "Break";
             //First check to see if the breaks are to be taken. 
             if (Break)
             {
-                DateTime BreakDate;
+                DateTime BreakDate = new DateTime();
+                
                 //Next check to see if November is contained within Semester.
                 if (memSemStart.Month <= 11 && memSemEnd.Month >= 11)
                 {
+                    memNumWeeks++;
                     BreakDate = Thanksgiving(memSemStart.Year);
+                    BreakName = "Thanksgiving Break";
                 }
-                else
+                else if (memSemStart.Month <= 3 && memSemEnd.Month >= 3)
                 {
-                    //If the semester contains spring break use the 10th week for spring break. 
+                    BreakName = "Spring Break";
+                    memNumWeeks++;
                     BreakDate = new DateTime(memSemStart.Year, 1, 1);
                     BreakDate = BreakDate.AddDays(11 * 7 - 1); //11 weeks from start of year contains the week of spring break
                 }
-                    memBreakWeek = 1;
+                    memBreakWeek = 0;
                     DateTime BreakFinder = memSemStart.Date;
                     //Calculate the break week by finding which week Thanksgiving falls in. 
                     while (BreakFinder.DayOfYear < memSemEnd.DayOfYear)
                     {
                         if (BreakFinder.DayOfYear >= BreakDate.DayOfYear)
                         {
-                            memBreakWeek--;
                             break;
                         }
                         memBreakWeek++;
@@ -86,7 +89,7 @@ namespace Calendar_Converter
             {
                 if ((i + 1) == memBreakWeek)
                 {
-                    memSemesterWeeks.Add(new Break(memSemStart, (i+1), "Break"));
+                    memSemesterWeeks.Add(new Break(memSemStart, (i+1), BreakName));
                 }
                 else
                 {
@@ -104,6 +107,11 @@ namespace Calendar_Converter
         public DateTime SemesterEnd
         {
             get { return memSemEnd; }
+        }
+
+        public int NumWeeks
+        {
+            get { return memNumWeeks; }
         }
 
         /// <summary>

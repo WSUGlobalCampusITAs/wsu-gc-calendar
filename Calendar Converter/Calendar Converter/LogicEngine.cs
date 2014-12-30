@@ -45,10 +45,13 @@ namespace Calendar_Converter
         //Setter for the Semesters
         public void Semesters(DateTime OldSemesterStart, DateTime NewSemesterStart,  int NumWeeks, bool Breaks)
         {
+            memCurrentWeek = 1;
             memOldSemester = new Semester(OldSemesterStart, NumWeeks, Breaks);
             memNewSemester = new Semester(NewSemesterStart, NumWeeks, Breaks);
-            memOldWeek = memOldSemester.Weeks[memCurrentWeek];
-            memNewWeek = memNewSemester.Weeks[memCurrentWeek];
+            AdjustBreaks();
+            memOldWeek = memOldSemester.Weeks[memCurrentWeek - 1];
+            memNewWeek = memNewSemester.Weeks[memCurrentWeek - 1];
+            memNumWeeks = memNewSemester.NumWeeks;
             LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Semester Update"));
         }
 
@@ -67,8 +70,8 @@ namespace Calendar_Converter
             if(memCurrentWeek < memNumWeeks)
             {
                 memCurrentWeek++;
-                memNewWeek = memNewSemester.Weeks[memCurrentWeek];
-                memOldWeek = memOldSemester.Weeks[memCurrentWeek];
+                memNewWeek = memNewSemester.Weeks[memCurrentWeek - 1];
+                memOldWeek = memOldSemester.Weeks[memCurrentWeek - 1];
                 LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Next"));
             }
            
@@ -79,19 +82,36 @@ namespace Calendar_Converter
             if (memCurrentWeek > 1)
             {
                 memCurrentWeek--;
-                memNewWeek = memNewSemester.Weeks[memCurrentWeek];
-                memOldWeek = memOldSemester.Weeks[memCurrentWeek];
+                memNewWeek = memNewSemester.Weeks[memCurrentWeek - 1];
+                memOldWeek = memOldSemester.Weeks[memCurrentWeek - 1];
                 LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Previous"));
             }
         }
 
-        //Items Needed - Collection of Weeks
-        //Break Class that inherits from Week
-        //Pass weeks to userinterface to allow containers for the weeks that are efficiently passed to 
-        //the User Interface
-        //Use events to pass updates to the user interface. 
+        private void AdjustBreaks()
+        {
+            Week toBeRemoved = new Week();
 
+            foreach(Week week in memOldSemester.Weeks)
+            {
+                if(week.IsBreak)
+                {
+                    toBeRemoved = week;
+                }
+            }
 
+            memOldSemester.Weeks.Remove(toBeRemoved);
+
+            foreach(Week week in memNewSemester.Weeks)
+            {
+                if(week.IsBreak)
+                {
+                    toBeRemoved = week;  
+                }
+            }
+
+            memOldSemester.Weeks.Insert(memNewSemester.Weeks.IndexOf(toBeRemoved), toBeRemoved);
+        }
 
     }
 }

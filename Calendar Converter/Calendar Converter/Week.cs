@@ -26,6 +26,7 @@ namespace Calendar_Converter
         protected DateTime memWeekStart { get; set; }
         protected DateTime memWeekEnd { get; set; }
         protected bool memIsBreak { get; set; }
+        protected string memBreakName;
 
         public Week()
         {
@@ -41,6 +42,7 @@ namespace Calendar_Converter
             memWeekStart = SemesterStart.Date.AddDays((WeekNumber - 1) * 7);
             memWeekEnd = memWeekStart.AddDays(7);
             memIsBreak = IsBreak;
+            memBreakName = "Break";
         }
 
         public int WeekNumber
@@ -75,7 +77,7 @@ namespace Calendar_Converter
                 {
                     if (memIsBreak)
                     {
-                        Dates.Add("Break");
+                        Dates.Add(memBreakName);
                         currentDate = currentDate.AddDays(1);
                     }
                     else
@@ -109,7 +111,6 @@ namespace Calendar_Converter
 
     class Break : Week
     {
-        protected string memBreakName;
 
         public Break() { }
         public Break(DateTime SemesterStart, int WeekNumber, string BreakName)
@@ -120,5 +121,6 @@ namespace Calendar_Converter
             this.memWeekEnd = memWeekStart.AddDays(7);
 
         }
+
     }
 }

@@ -149,10 +149,6 @@ namespace Calendar_Converter
                     if (IsInt(txtbxNumWeeks.Text))
                     {
                         memNumWeeks = Convert.ToInt32(txtbxNumWeeks.Text);
-                        if (memBreak)
-                        {
-                            memNumWeeks++;
-                        }
                         memEngine.Semesters(memOldSemStart, memNewSemStart, memNumWeeks, memBreak);
 
                     }
