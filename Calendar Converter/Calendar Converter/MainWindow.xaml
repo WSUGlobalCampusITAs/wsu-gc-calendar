@@ -44,35 +44,35 @@
                 <ColumnDefinition Width="83*"/>
                 <ColumnDefinition Width="83*"/>
             </Grid.ColumnDefinitions>
-            <Rectangle Grid.Column="4" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Grid.Column="2" Fill="#FF555595" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Grid.Column="2" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Grid.Column="2" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="2" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="3" Fill="#FF555595" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="3" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Grid.Column="3" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="3" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="4" Fill="#FF555595" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="4" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="4" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="5" Fill="#FF555595" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="5" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Grid.Column="5" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="5" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="6" Fill="#FF555595" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="6" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="6" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="6" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="1" Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="1" Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="1" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Grid.Column="1" Fill="#FF555595" Stroke="Black" d:IsLocked="True" />
-            <Rectangle Fill="#FFBD7964" Grid.Row="3" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Fill="#FF8D3106" Grid.Row="2" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" d:IsLocked="True"/>
-            <Rectangle Fill="#FF555595"  Stroke="Black" d:IsLocked="True" />
-            <TextBlock x:Name="tblkOld0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="16"/>
+            <Rectangle Grid.Column="4" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" />
+            <Rectangle Grid.Column="2" Fill="#FF7979BF" Stroke="Black" />
+            <Rectangle Grid.Column="2" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" />
+            <Rectangle Grid.Column="2" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="2" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Fill="#FF7979BF" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" />
+            <Rectangle Grid.Column="3" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="3" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Fill="#FF7979BF" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="4" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Fill="#FF7979BF" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black" />
+            <Rectangle Grid.Column="5" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="5" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Fill="#FF7979BF" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="6" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black"/>
+            <Rectangle Grid.Column="1" Fill="#FF7979BF" Stroke="Black" />
+            <Rectangle Fill="#FFBD7964" Grid.Row="3" Stroke="Black"/>
+            <Rectangle Fill="#FF9C5252" Grid.Row="2" Stroke="Black"/>
+            <Rectangle Fill="#FFB8B8D3" Grid.Row="1" Stroke="Black"/>
+            <Rectangle Fill="#FF7979BF"  Stroke="Black" />
+            <TextBlock x:Name="tblkOld0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="16" Foreground="Black"/>
             <TextBlock x:Name="tblkOld1" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontFamily="Times New Roman" FontSize="16"/>
             <TextBlock x:Name="tblkNew0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontFamily="Times New Roman" FontSize="16"/>
             <TextBlock x:Name="tblkOld2" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontFamily="Times New Roman" FontSize="16"/>
