@@ -28,7 +28,7 @@
     <InstallUrl>\\eusfiles.ad.wsu.edu\Shared\COURSE DEVELOPMENT\ITA Individual Folders\Checklists\Calendar Converter\</InstallUrl>
     <UpdateUrl>\\eusfiles.ad.wsu.edu\Shared\COURSE DEVELOPMENT\ITA Individual Folders\Checklists\Calendar Converter\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -93,11 +93,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Day.xaml.cs">
+      <DependentUpon>Day.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogicEngine.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Semester.cs" />
+    <Compile Include="SemesterCalendar.xaml.cs">
+      <DependentUpon>SemesterCalendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Week.cs" />
+    <Page Include="Day.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +120,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SemesterCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -44,6 +44,7 @@ namespace Calendar_Converter
         private List<TextBlock> NewDates;
         private LogicEngine memEngine;
         private bool memBreak;
+		private SemesterCalendar memSemCal;
         /// <summary>
         /// Default Constructor for MainWindow
         /// </summary>
@@ -174,7 +175,7 @@ namespace Calendar_Converter
                     {
                         memNumWeeks = Convert.ToInt32(txtbxNumWeeks.Text);
                         memEngine.Semesters(memOldSemStart, memNewSemStart, memNumWeeks, memBreak);
-
+                        BtnFullCalendar.IsEnabled = true;
                     }
                 }
                 else
@@ -237,5 +238,12 @@ namespace Calendar_Converter
             memEngine.Previous();
         }
 
+        private void BtnFullCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            memSemCal = new SemesterCalendar(memEngine.OldSemester, memEngine.NewSemester);
+        }
+
     }
+	
+	
 }

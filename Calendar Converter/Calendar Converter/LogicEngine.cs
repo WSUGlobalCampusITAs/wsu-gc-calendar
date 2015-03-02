@@ -55,6 +55,12 @@ namespace Calendar_Converter
             LogicEngine_SubscriptionUpdate(this, new PropertyChangedEventArgs("Semester Update"));
         }
 
+        public Semester OldSemester
+        { get { return memOldSemester; } }
+
+        public Semester NewSemester
+        { get { return memNewSemester; } }
+
         public Week OldWeek
         {
             get { return memOldWeek; }

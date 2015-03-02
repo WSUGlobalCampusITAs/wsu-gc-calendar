@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Calendar_Converter
 {
-    class Semester
+    public class Semester
     {
         //Member Variable Declarations
         private DateTime memSemStart;

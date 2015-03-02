@@ -24,7 +24,7 @@ namespace Calendar_Converter
     /// The Week class acts as a container class for the Weeks of a given semester. 
     /// This class allows specific weeks to be specified, added to and removed. 
     /// </summary>
-    class Week
+    public class Week
     {
         //protected member variables
         protected int memWeekNumber {get; set;}
@@ -55,7 +55,7 @@ namespace Calendar_Converter
         {
             memWeekNumber = WeekNumber;
             memWeekStart = SemesterStart.Date.AddDays((WeekNumber - 1) * 7);
-            memWeekEnd = memWeekStart.AddDays(7);
+            memWeekEnd = memWeekStart.AddDays(6);
             memIsBreak = IsBreak;
             memBreakName = "Break";
         }
@@ -146,7 +146,7 @@ namespace Calendar_Converter
             this.memBreakName = BreakName;
             this.memIsBreak = true;
             this.memWeekStart = SemesterStart.Date.AddDays((WeekNumber - 1) * 7);
-            this.memWeekEnd = memWeekStart.AddDays(7);
+            this.memWeekEnd = memWeekStart.AddDays(6);
         }
 
     }
