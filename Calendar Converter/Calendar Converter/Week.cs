@@ -98,7 +98,7 @@ namespace Calendar_Converter
                     }
                     else
                     {
-                        Dates.Add(currentDate.ToShortDateString());
+                        Dates.Add(currentDate.GetDateTimeFormats()[2]); //Outputs date in MM/DD/YY Format
                         currentDate = currentDate.AddDays(1);
                     }
                 }
