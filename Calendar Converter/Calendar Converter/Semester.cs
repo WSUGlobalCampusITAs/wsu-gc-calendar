@@ -61,8 +61,15 @@ namespace Calendar_Converter
                 {
                     BreakName = "Spring Break";
                     memNumWeeks++;
-                    BreakDate = new DateTime(memSemStart.Year, 1, 1);
-                    BreakDate = BreakDate.AddDays(11 * 7 - 1); //11 weeks from start of year contains the week of spring break
+                    if (Properties.Settings.Default.AutoCalcBreaks == true)
+                    {
+                        BreakDate = new DateTime(memSemStart.Year, 1, 1);
+                        BreakDate = BreakDate.AddDays(11 * 7 - 1); //11 weeks from start of year contains the week of spring break
+                    }
+                    else
+                    {
+                        Load_Spring_Break(); //Method to load break data from XML File
+                    }
                 }
                     memBreakWeek = 0;
                     DateTime BreakFinder = memSemStart.Date;
@@ -162,6 +169,12 @@ namespace Calendar_Converter
         public List<Week> Weeks
         {
             get { return memSemesterWeeks; }
+        }
+
+        private void Load_Spring_Break()
+        { 
+            //Need to add Reading Spring Break from XML File
+            throw (new NotImplementedException());
         }
     }
 }

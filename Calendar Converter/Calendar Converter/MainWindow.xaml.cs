@@ -45,6 +45,7 @@ namespace Calendar_Converter
         private LogicEngine memEngine;
         private bool memBreak;
 		private SemesterCalendar memSemCal;
+        private winSettings memSettingsWin;
         /// <summary>
         /// Default Constructor for MainWindow
         /// </summary>
@@ -174,8 +175,16 @@ namespace Calendar_Converter
                     if (IsInt(txtbxNumWeeks.Text))
                     {
                         memNumWeeks = Convert.ToInt32(txtbxNumWeeks.Text);
-                        memEngine.Semesters(memOldSemStart, memNewSemStart, memNumWeeks, memBreak);
-                        BtnFullCalendar.IsEnabled = true;
+                        try
+                        {
+                            memEngine.Semesters(memOldSemStart, memNewSemStart, memNumWeeks, memBreak);
+                            BtnFullCalendar.IsEnabled = true;
+                        }
+                        catch (NotImplementedException)
+                        {
+                            MessageBox.Show("There is a feature trying to be used that is not yet implemented");
+                        }
+                        
                     }
                 }
                 else
@@ -241,6 +250,12 @@ namespace Calendar_Converter
         private void BtnFullCalendar_Click(object sender, RoutedEventArgs e)
         {
             memSemCal = new SemesterCalendar(memEngine.OldSemester, memEngine.NewSemester);
+        }
+
+        private void btnSettings_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            memSettingsWin = new winSettings();
+			// TODO: Add event handler implementation here.
         }
 
     }

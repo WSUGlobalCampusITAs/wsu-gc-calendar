@@ -93,6 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BreakSettings.xaml.cs">
+      <DependentUpon>BreakSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Day.xaml.cs">
       <DependentUpon>Day.xaml</DependentUpon>
     </Compile>
@@ -103,7 +106,14 @@
     <Compile Include="SemesterCalendar.xaml.cs">
       <DependentUpon>SemesterCalendar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Week.cs" />
+    <Page Include="BreakSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Day.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +131,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SemesterCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -179,6 +193,7 @@
     <Resource Include="BackgroundTile.PNG" />
     <Resource Include="global_logo.png" />
     <Resource Include="logo.png" />
+    <Resource Include="system_preferences.ico" />
     <Resource Include="wsu-globalcampus-signature-primary.png" />
   </ItemGroup>
   <ItemGroup>

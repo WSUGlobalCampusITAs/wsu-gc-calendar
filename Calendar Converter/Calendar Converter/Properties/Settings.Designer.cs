@@ -23,15 +23,24 @@ namespace Calendar_Converter.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("BreakDataFile.xml")]
         public string BreakDataFile {
             get {
                 return ((string)(this["BreakDataFile"]));
             }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoCalcBreaks {
+            get {
+                return ((bool)(this["AutoCalcBreaks"]));
+            }
             set {
-                this["BreakDataFile"] = value;
+                this["AutoCalcBreaks"] = value;
             }
         }
     }
