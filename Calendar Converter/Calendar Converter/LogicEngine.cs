@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace Calendar_Converter
 {
     /// <summary>
-    /// This class implements the functionality of navigating weeks, and populating the semesters. 
+    /// This class implements the functionality of navigating weeks, and populating semesters. 
     /// This is added for the sake of seperating the user interface from the logic of the code. 
     /// </summary>
     class LogicEngine : INotifyPropertyChanged
