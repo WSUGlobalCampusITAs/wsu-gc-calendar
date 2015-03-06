@@ -1,0 +1,22 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Calendar_Converter.BreakSettings"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="400" Height="480"
+	WindowWidth="640" WindowHeight="480">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="261*"/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Break Settings" FontSize="18" Foreground="White" Height="23.94" Margin="143.508,9.53" Width="112.984"/>
+        <Label Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Content="Auto Calculate Breaks" Margin="0,2.02" Height="25.96" Width="124.827"/>
+        <CheckBox  x:Name="ckbxAutoCalc" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,7.451" Height="15.098" Width="15.975" Click="ckbxAutoCalc_Click" />
+    </Grid>
+</Page>
