@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calendar_Converter.ViewModel
 {
-    class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
+
     }
 }

@@ -37,7 +37,7 @@
         <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="4" BorderBrush="Black" BorderThickness="2">
             <Frame Source="{Binding SingleWeeks}"/>
         </Border>
-		<Frame Source="{Binding Controls}" Margin="4" Grid.Column="1"/>
+        <Frame Source="{Binding Controls}"  Margin="4" Grid.Column="1"/>
 		<Border Margin="4">
 			<Grid>
                 <TextBlock Text="Calendar Converter"  FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,90, 0, 0"/>
