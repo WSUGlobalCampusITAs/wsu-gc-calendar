@@ -13,6 +13,7 @@
 //   limitations under the License.
 
 using System.Windows;
+using Calendar_Converter.View;
 
 namespace Calendar_Converter
 {
@@ -30,6 +31,7 @@ namespace Calendar_Converter
         public MainWindow()
         {
             InitializeComponent();
+            frmControls.Navigate(new Controls());
         }
     }
 	

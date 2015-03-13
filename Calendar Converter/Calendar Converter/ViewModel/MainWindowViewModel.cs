@@ -11,7 +11,6 @@ namespace Calendar_Converter.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         readonly SemesterLogic _semesters;
-        private ViewModelBase _controls;
         ObservableCollection<ViewModelBase> _singleWeeksViewModels;
 
         public MainWindowViewModel()
@@ -32,16 +31,6 @@ namespace Calendar_Converter.ViewModel
             }
         }
 
-        public ViewModelBase Controls
-        {
-            get
-            {
-                if(_controls == null)
-                {
-                    _controls = new ControlsViewModel();
-                }
-                return _controls;
-            }
-        }
+        //Need to add Command handling
     }
 }

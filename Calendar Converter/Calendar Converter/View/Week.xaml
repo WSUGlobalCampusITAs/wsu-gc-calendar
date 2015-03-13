@@ -3,16 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="128" Width="472">
+             xmlns:vw="clr-namespace:Calendar_Converter.View"
+             mc:Ignorable="d" Height="100" Width="560">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" Background="{Binding WeekBackground}">
-        <ItemsControl ItemsSource="{Binding DaysViewModels}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <UniformGrid Columns="7" Rows="1"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <Border BorderBrush="Black" Margin="2">
+        <UniformGrid Columns="7" Rows="1">
+            <vw:Day/>
+            <vw:Day/>
+            <vw:Day/>
+            <vw:Day/>
+            <vw:Day/>
+            <vw:Day/>
+            <vw:Day/>
+        </UniformGrid>
         </Border>
     </Grid>
 </UserControl>

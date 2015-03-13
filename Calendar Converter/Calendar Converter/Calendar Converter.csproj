@@ -99,13 +99,9 @@
     <Compile Include="Model\Break.cs" />
     <Compile Include="Model\Semester.cs" />
     <Compile Include="Model\Week.cs" />
-    <Compile Include="ViewModel\ControlsViewModel.cs" />
-    <Compile Include="ViewModel\DaysViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\SemestersViewModel.cs" />
-    <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\WeekViewModel.cs" />
     <Compile Include="View\Controls.xaml.cs">
       <DependentUpon>Controls.xaml</DependentUpon>
     </Compile>
@@ -169,7 +165,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Calendar Converter_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

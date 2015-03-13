@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calendar_Converter.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -17,6 +18,8 @@ namespace Calendar_Converter
         {
             base.OnStartup(e);
             MainWindow window = new MainWindow();
+            var viewModel = new MainWindowViewModel();
+            window.DataContext = viewModel;
             window.Show();
         }
     }
