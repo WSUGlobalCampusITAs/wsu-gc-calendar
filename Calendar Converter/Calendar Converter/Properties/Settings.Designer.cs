@@ -34,5 +34,63 @@ namespace Calendar_Converter.Properties {
                 this["BreakDataFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime OldStart {
+            get {
+                return ((global::System.DateTime)(this["OldStart"]));
+            }
+            set {
+                this["OldStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime NewStart {
+            get {
+                return ((global::System.DateTime)(this["NewStart"]));
+            }
+            set {
+                this["NewStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IncludeBreaks {
+            get {
+                return ((bool)(this["IncludeBreaks"]));
+            }
+            set {
+                this["IncludeBreaks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CalculateBreaks {
+            get {
+                return ((bool)(this["CalculateBreaks"]));
+            }
+            set {
+                this["CalculateBreaks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16")]
+        public int NumberOfWeeks {
+            get {
+                return ((int)(this["NumberOfWeeks"]));
+            }
+            set {
+                this["NumberOfWeeks"] = value;
+            }
+        }
     }
 }
