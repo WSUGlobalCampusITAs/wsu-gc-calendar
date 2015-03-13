@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calendar_Converter.ViewModel
 {
-    public class ControlsViewModel : ViewModelBase
+    class SettingsViewModel
     {
     }
 }

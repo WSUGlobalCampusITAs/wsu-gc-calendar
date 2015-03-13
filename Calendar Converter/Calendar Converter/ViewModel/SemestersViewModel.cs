@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calendar_Converter.ViewModel
 {
-    class SemestersViewModel
+    public class SemestersViewModel : ViewModelBase
     {
     }
 }
