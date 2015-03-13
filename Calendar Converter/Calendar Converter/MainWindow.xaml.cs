@@ -31,7 +31,6 @@ namespace Calendar_Converter
         public MainWindow()
         {
             InitializeComponent();
-            frmControls.Navigate(new Controls());
         }
     }
 	

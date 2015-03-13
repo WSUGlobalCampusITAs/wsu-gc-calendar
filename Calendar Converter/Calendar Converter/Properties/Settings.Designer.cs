@@ -37,6 +37,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
         public global::System.DateTime OldStart {
             get {
                 return ((global::System.DateTime)(this["OldStart"]));
@@ -48,6 +49,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
         public global::System.DateTime NewStart {
             get {
                 return ((global::System.DateTime)(this["NewStart"]));
@@ -84,12 +86,36 @@ namespace Calendar_Converter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("16")]
-        public int NumberOfWeeks {
+        public uint NumberOfWeeks {
             get {
-                return ((int)(this["NumberOfWeeks"]));
+                return ((uint)(this["NumberOfWeeks"]));
             }
             set {
                 this["NumberOfWeeks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CurrentWeek {
+            get {
+                return ((int)(this["CurrentWeek"]));
+            }
+            set {
+                this["CurrentWeek"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int DateFormatString {
+            get {
+                return ((int)(this["DateFormatString"]));
+            }
+            set {
+                this["DateFormatString"] = value;
             }
         }
     }

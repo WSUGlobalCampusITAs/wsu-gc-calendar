@@ -6,10 +6,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="OldStart" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2015-01-01</Value>
     </Setting>
     <Setting Name="NewStart" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2015-01-01</Value>
     </Setting>
     <Setting Name="IncludeBreaks" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -17,8 +17,14 @@
     <Setting Name="CalculateBreaks" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="NumberOfWeeks" Type="System.Int32" Scope="User">
+    <Setting Name="NumberOfWeeks" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="CurrentWeek" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DateFormatString" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
     </Setting>
   </Settings>
 </SettingsFile>
