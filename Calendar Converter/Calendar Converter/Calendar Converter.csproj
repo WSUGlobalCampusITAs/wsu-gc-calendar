@@ -101,6 +101,7 @@
     <Compile Include="Model\Day.cs" />
     <Compile Include="Model\Semester.cs" />
     <Compile Include="Model\Week.cs" />
+    <Compile Include="ViewModel\MainViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SemestersViewModel.cs" />
@@ -111,6 +112,9 @@
     </Compile>
     <Compile Include="View\Day.xaml.cs">
       <DependentUpon>Day.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SemesterCalendar.xaml.cs">
       <DependentUpon>SemesterCalendar.xaml</DependentUpon>
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Day.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
