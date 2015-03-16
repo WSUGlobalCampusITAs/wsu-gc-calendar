@@ -17,7 +17,18 @@
         xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Calendar_Converter.MainWindow"
-        Title="Calendar Converter" MinHeight="540" MinWidth="816" WindowStartupLocation="CenterScreen">
+        xmlns:vw="clr-namespace:Calendar_Converter.View"
+        xmlns:p="clr-namespace:Calendar_Converter.Properties"
+        xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
+        Title="Calendar Converter" MinHeight="550" MinWidth="850" Height="550" Width="850" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MainViewViewModel}">
+            <vw:MainView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SemestersViewModel}">
+            <vw:SemesterCalendar />
+        </DataTemplate>
+    </Window.Resources>
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -25,121 +36,28 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <Grid Margin="0,0,2,1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="173*"/>
-            <ColumnDefinition Width="241*"/>
-            <ColumnDefinition Width="177*"/>
-            <ColumnDefinition Width="167*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="207*"/>
-            <RowDefinition Height="248*"/>
-            <RowDefinition Height="49*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
-        <Viewbox Margin="0,0,0,0" Grid.Column="2" Grid.ColumnSpan="2" >
-            <Grid  Margin="0,0,0,0">
-                <DatePicker x:Name="dtpickOldStart" Margin="178,15.768,10,161.291" Background="Transparent" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="156"/>
-                <DatePicker x:Name="dtpickNewStart" Margin="178,50,10,125.589" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" HorizontalAlignment="Center" Width="156" Height="31" VerticalAlignment="Center"/>
-                <Label Content="Old Start Date" Margin="3.001,10.481,239.472,166.578" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="101.527"/>
-                <Label Content="New Start Date" Margin="3.001,44.713,222.899,133.766"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="118.1"/>
-                <TextBox x:Name="txtbxNumWeeks" Margin="181,91,137,96.589" TextAlignment="Center" FontFamily="Times New Roman" Grid.Column="1" Text="16" HorizontalAlignment="Center" Width="26" Height="19" VerticalAlignment="Center"/>
-                <Label Content="Number of Weeks" Margin="3.001,82.713,203.346,95.766" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="137.653"/>
-                <Button x:Name="BtnUpdate" Content="Update" Margin="9,166,203,15" Background="{x:Null}" Click="BtnUpdate_Click" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="132" Height="26" VerticalAlignment="Center"/>
-                <Button x:Name="BtnFullCalendar" Content="Full Calendar" IsEnabled="False" Margin="181,166,20,15" Background="{x:Null}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="143" Height="26" VerticalAlignment="Center" Click="BtnFullCalendar_Click"/>
-                <RadioButton  x:Name="rbSkipbreak" Content="Skip Breaks" Margin="181,124,33,63.589" Checked="RadioButton_Checked" GroupName="Breaks" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" HorizontalAlignment="Center" Width="130" Height="19" VerticalAlignment="Center"/>
-                <RadioButton  x:Name="rbNoskip" Content="Do Not Skip Breaks" Margin="6.001,124,179.872,63.589"  Checked="RadioButton_Checked" GroupName="Breaks" IsChecked="True" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" HorizontalAlignment="Center" Width="158.127" Height="19" VerticalAlignment="Center"/>
-            </Grid>
-        </Viewbox>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2" Grid.Column="3">
-            <Button x:Name="btnNext" Content="Next"  Click="btnNext_Click" Background="#FF02736D"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16" Width="150"/>
-        </Viewbox>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2">
-            <Button x:Name="btnPrevious" Width="150" Content="Previous"  Click="btnPrevious_Click" Background="#FF981E32"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16"/>
-        </Viewbox>
-        <Viewbox Margin="10,0,10,1.5" Grid.Row="1" Grid.ColumnSpan="4" Stretch="Uniform">
-            <Grid Margin="0,0,0,0" Height="250" Width="750" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="26*"/>
-                    <RowDefinition Height="93*"/>
-                    <RowDefinition Height="26*"/>
-                    <RowDefinition Height="93*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                    <ColumnDefinition Width="83*"/>
-                </Grid.ColumnDefinitions>
-                <Rectangle Grid.ColumnSpan="7" Fill="#FF02736D" Margin="0,0,0,0" Grid.Row="2" StrokeThickness="1"/>
-                <Rectangle Margin="0,0,0,0" Grid.ColumnSpan="7" StrokeThickness="1" Fill="#FF981E32"/>
-                <Rectangle Grid.Column="4" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9" />
-                <Rectangle Grid.Column="2" Stroke="Black" />
-                <Rectangle Grid.Column="2" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9" />
-                <Rectangle Grid.Column="2" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="2" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="3" Stroke="Black"/>
-                <Rectangle Grid.Column="3" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9" />
-                <Rectangle Grid.Column="3" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="3" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="4" Stroke="Black"/>
-                <Rectangle Grid.Column="4" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="4" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="5" Stroke="Black"/>
-                <Rectangle Grid.Column="5" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9" />
-                <Rectangle Grid.Column="5" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="5" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="6" Stroke="Black"/>
-                <Rectangle Grid.Column="6" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="6" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="6" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="1" Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="1" Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Column="1" Stroke="Black" />
-                <Rectangle Grid.Row="3" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle Grid.Row="2" Stroke="Black"/>
-                <Rectangle Grid.Row="1" Stroke="Black" Fill="#FFC9C9C9"/>
-                <Rectangle  Stroke="Black" />
-                <TextBlock x:Name="tblkOld0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld1" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew0" TextWrapping="Wrap" Text="Monday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld2" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew1" TextWrapping="Wrap" Text="Tuesday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld3" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew2" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Text="Wednesday" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld4" TextWrapping="Wrap" Text="Friday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew3" TextWrapping="Wrap" Text="Thursday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="3" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld5" TextWrapping="Wrap" Text="Saturday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="5" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew4" TextWrapping="Wrap" Text="Friday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOld6" TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" FontFamily="Lucida Sans Unicode" FontSize="16" Foreground="#FFEBEBEB" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew5" TextWrapping="Wrap" Text="Saturday" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="5" FontFamily="Lucida Sans Unicode"  Foreground="#FFEBEBEB" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNew6" TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="6" Grid.Row="2" FontFamily="Lucida Sans Unicode"  Foreground="#FFEBEBEB" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldMonday" Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldTuesday" Grid.Row="1" TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldWednesday" Grid.Row="1" TextAlignment="Center" Grid.Column="2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldThursday" Grid.Row="1" TextAlignment="Center" Grid.Column="3" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldFriday" Grid.Row="1" TextAlignment="Center" Grid.Column="4" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldSaturday" Grid.Row="1" TextAlignment="Center" Grid.Column="5" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkOldSunday" Grid.Row="1" TextAlignment="Center" Grid.Column="6" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewMonday" Grid.Row="3" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewTuesday" Grid.Row="3" TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif"  Foreground="Black" FontSize="16" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewWednesday" Grid.Row="3" TextAlignment="Center" Grid.Column="2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewThursday" Grid.Row="3" TextAlignment="Center" Grid.Column="3" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewFriday" Grid.Row="3" TextAlignment="Center" Grid.Column="4" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewSaturday" Grid.Row="3" TextAlignment="Center" Grid.Column="5" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <TextBlock x:Name="tblkNewSunday" Grid.Row="3" TextAlignment="Center" Grid.Column="6" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="Black" FontStretch="UltraExpanded"/>
-                <Rectangle Grid.ColumnSpan="7" Grid.RowSpan="4" Margin="0,0,0,0" Stroke="Black" StrokeThickness="2"/>
-            </Grid>
-        </Viewbox>
-        <Viewbox Margin="0,0,0,0" Grid.ColumnSpan="2">
-            <Grid Margin="0,0,0,0">
-                <Label Content="Calendar Converter" Margin="128.376,111.678,128.376,65.677" FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Image Source="wsu-globalcampus-signature-primary.png" Stretch="Uniform" Margin="48.499,50.294,82.5,85.294" VerticalAlignment="Center" HorizontalAlignment="Center" Height="71" Width="283"/>
-            </Grid>
-        </Viewbox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="4">
+            <Viewbox>
+                <Grid>
+                    <TextBlock Text="Calendar Converter"  FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,60,0,-1"/>
+                    <Image Source="Resources/wsu-globalcampus-signature-primary.png" Stretch="Uniform"  VerticalAlignment="Top" HorizontalAlignment="Left" Height="71" Width="283" Margin="20,0,0,0"/>
+                </Grid>
+            </Viewbox>
+        </Border>
+        <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Viewbox>
+                <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="4" ClipToBounds="True"/>
+            </Viewbox>
+        </ScrollViewer>
+
     </Grid>
 </Window>

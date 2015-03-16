@@ -34,5 +34,125 @@ namespace Calendar_Converter.Properties {
                 this["BreakDataFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        public global::System.DateTime OldStart {
+            get {
+                return ((global::System.DateTime)(this["OldStart"]));
+            }
+            set {
+                this["OldStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        public global::System.DateTime NewStart {
+            get {
+                return ((global::System.DateTime)(this["NewStart"]));
+            }
+            set {
+                this["NewStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IncludeBreaks {
+            get {
+                return ((bool)(this["IncludeBreaks"]));
+            }
+            set {
+                this["IncludeBreaks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CalculateBreaks {
+            get {
+                return ((bool)(this["CalculateBreaks"]));
+            }
+            set {
+                this["CalculateBreaks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16")]
+        public uint NumberOfWeeks {
+            get {
+                return ((uint)(this["NumberOfWeeks"]));
+            }
+            set {
+                this["NumberOfWeeks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CurrentWeek {
+            get {
+                return ((int)(this["CurrentWeek"]));
+            }
+            set {
+                this["CurrentWeek"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int DateFormatString {
+            get {
+                return ((int)(this["DateFormatString"]));
+            }
+            set {
+                this["DateFormatString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF981E32")]
+        public global::System.Windows.Media.SolidColorBrush OldSemesterColor {
+            get {
+                return ((global::System.Windows.Media.SolidColorBrush)(this["OldSemesterColor"]));
+            }
+            set {
+                this["OldSemesterColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF02736D")]
+        public global::System.Windows.Media.SolidColorBrush NewSemesterColor {
+            get {
+                return ((global::System.Windows.Media.SolidColorBrush)(this["NewSemesterColor"]));
+            }
+            set {
+                this["NewSemesterColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int SpringBreakWeekNum {
+            get {
+                return ((int)(this["SpringBreakWeekNum"]));
+            }
+            set {
+                this["SpringBreakWeekNum"] = value;
+            }
+        }
     }
 }

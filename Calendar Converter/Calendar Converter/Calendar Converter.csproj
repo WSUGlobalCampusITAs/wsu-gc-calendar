@@ -76,6 +76,7 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -93,21 +94,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Day.xaml.cs">
+    <Compile Include="DataAccess\BreakDates.cs" />
+    <Compile Include="DataAccess\SemesterLogic.cs" />
+    <Compile Include="Model\Break.cs" />
+    <Compile Include="Model\Day.cs" />
+    <Compile Include="Model\Semester.cs" />
+    <Compile Include="Model\Week.cs" />
+    <Compile Include="ViewModel\MainViewViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\SemestersViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\WeekViewModel.cs" />
+    <Compile Include="View\Controls.xaml.cs">
+      <DependentUpon>Controls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Day.xaml.cs">
       <DependentUpon>Day.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogicEngine.cs">
-      <SubType>Code</SubType>
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Semester.cs" />
-    <Compile Include="SemesterCalendar.xaml.cs">
+    <Compile Include="View\SemesterCalendar.xaml.cs">
       <DependentUpon>SemesterCalendar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Week.cs" />
-    <Page Include="Day.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="View\Week.xaml.cs">
+      <DependentUpon>Week.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,11 +133,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SemesterCalendar.xaml">
+    <Page Include="Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Simple Styles.xaml">
+    <Page Include="View\Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Day.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SemesterCalendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Week.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -147,7 +176,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Calendar Converter_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,13 +204,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BackgroundTile.PNG" />
-    <Resource Include="global_logo.png" />
-    <Resource Include="logo.png" />
-    <Resource Include="wsu-globalcampus-signature-primary.png" />
+    <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="favicon.ico" />
+    <Resource Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\global_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\wsu-globalcampus-signature-primary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BackgroundTile.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

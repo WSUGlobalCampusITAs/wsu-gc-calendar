@@ -5,5 +5,35 @@
     <Setting Name="BreakDataFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="OldStart" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-01-01</Value>
+    </Setting>
+    <Setting Name="NewStart" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2015-01-01</Value>
+    </Setting>
+    <Setting Name="IncludeBreaks" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CalculateBreaks" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NumberOfWeeks" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">16</Value>
+    </Setting>
+    <Setting Name="CurrentWeek" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DateFormatString" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="OldSemesterColor" Type="System.Windows.Media.SolidColorBrush" Scope="User">
+      <Value Profile="(Default)">#FF981E32</Value>
+    </Setting>
+    <Setting Name="NewSemesterColor" Type="System.Windows.Media.SolidColorBrush" Scope="User">
+      <Value Profile="(Default)">#FF02736D</Value>
+    </Setting>
+    <Setting Name="SpringBreakWeekNum" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
