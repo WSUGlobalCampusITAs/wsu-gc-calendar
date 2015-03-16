@@ -13,68 +13,25 @@ namespace Calendar_Converter.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        readonly SemesterLogic _semesters;
-        ObservableCollection<ViewModelBase> _currentWeeks;
-        private int NumberOfWeeks;
-        private SemestersViewModel _fullCalendar;
-
-        private readonly ICommand _updateCommand;
-        private readonly ICommand _nextCommand;
-        private readonly ICommand _previousCommand;
+        private ObservableCollection<ViewModelBase> _currentViewModel;
+        private List<ViewModelBase> _viewModels;
         private readonly ICommand _fullCalendarCommand;
+        private SemestersViewModel _fullCalendar;
+        private SemesterLogic _semesters;
 
         public MainWindowViewModel()
         {
             _semesters = new SemesterLogic();
-            NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            _updateCommand = new RelayCommand(Update);
-            _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < NumberOfWeeks - 1));
-            _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
+            _currentViewModel = new ObservableCollection<ViewModelBase>();
+            _currentViewModel.Add(new MainViewViewModel(_semesters));
+            _viewModels = new List<ViewModelBase>();
+            _viewModels.Add(_currentViewModel[0]); //Starting View Model is the Main View, which also takes the 0 spot in the ViewModel List
             _fullCalendarCommand = new RelayCommand(FullCalendar);
         }
 
-        public ObservableCollection<ViewModelBase> SingleWeek
+        public ObservableCollection<ViewModelBase> CurrentViewModel
         {
-            get
-            {
-                if(_currentWeeks == null)
-                {
-                    _currentWeeks = new ObservableCollection<ViewModelBase>();             
-                    Update(this);
-                }
-                return _currentWeeks;
-            }
-        }
-
-        public void Update(object obj)
-        {
-            _currentWeeks.Clear();
-            NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            if(Settings.Default.IncludeBreaks)
-            {
-                NumberOfWeeks++;
-            }
-            _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, NumberOfWeeks, Settings.Default.IncludeBreaks);
-            Settings.Default.CurrentWeek = 0;
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
-        }
-
-        public void Next(object obj)
-        {
-            Settings.Default.CurrentWeek++;
-            _currentWeeks.Clear();
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
-
-        }
-
-        public void Previous(object obj)
-        {
-            Settings.Default.CurrentWeek--;
-            _currentWeeks.Clear();
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
+            get { return _currentViewModel; }
         }
 
         public void FullCalendar(object obj)
@@ -82,8 +39,7 @@ namespace Calendar_Converter.ViewModel
             _fullCalendar = new SemestersViewModel(_semesters);
         }
 
-        public ICommand UpdateCommand { get { return _updateCommand; } }
-        public ICommand NextCommand { get { return _nextCommand; } }
-        public ICommand PreviousCommand { get { return _previousCommand; } }
+
+        
     }
 }

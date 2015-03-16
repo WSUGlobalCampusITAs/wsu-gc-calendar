@@ -22,8 +22,8 @@
         xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
         Title="Calendar Converter" MinHeight="540" MinWidth="816" Height="550" Width="850" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:WeekViewModel}">
-            <vw:Week />
+        <DataTemplate DataType="{x:Type vm:MainViewViewModel}">
+            <vw:MainView />
         </DataTemplate>
     </Window.Resources>
     <Window.Background>
@@ -33,39 +33,15 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <Grid Margin="0,0,2,1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="193*"/>
-            <ColumnDefinition Width="186*"/>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="118*"/>
-            <RowDefinition Height="114*"/>
-            <RowDefinition Height="27*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="87*"/>
         </Grid.RowDefinitions>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2" Grid.Column="1" >
-            <Button x:Name="btnNext" Content="Next" Command="{Binding NextCommand}"  Background="#FF02736D"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16" Width="150"/>
-        </Viewbox>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2">
-            <Button x:Name="btnPrevious" Width="150" Content="Previous" Command="{Binding PreviousCommand}" Background="#FF981E32"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16"/>
-        </Viewbox>
-        <Viewbox Grid.Row="1" Grid.ColumnSpan="2" Margin="4,4,4,50" Grid.RowSpan="2" MaxHeight="400">
-            <ItemsControl ItemsSource="{Binding SingleWeek}" Margin="0,0,0,0"/>
-        </Viewbox>
-        <Viewbox Margin="4" Grid.Column="1">
-            <Grid  Margin="0,0,0,0">
-                <DatePicker SelectedDate="{Binding Source={x:Static p:Settings.Default}, Mode=TwoWay, Path=OldStart}" x:Name="dtpickOldStart" Margin="178,15.768,10,161.291" Background="Transparent" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="156"/>
-                <DatePicker SelectedDate="{Binding Source={x:Static p:Settings.Default}, Mode=TwoWay, Path=NewStart}" Margin="178,50,10,125.589" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" HorizontalAlignment="Center" Width="156" Height="31" VerticalAlignment="Center"/>
-                <Label Content="Old Start Date" Margin="3.001,10.481,239.472,166.578" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="101.527"/>
-                <Label Content="New Start Date" Margin="3.001,44.713,222.899,133.766"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="118.1"/>
-                <TextBox x:Name="txtbxNumWeeks" Margin="181,91,137,96.589" TextAlignment="Center" FontFamily="Times New Roman" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Mode=TwoWay, Path=NumberOfWeeks}" HorizontalAlignment="Center" Width="26" Height="19" VerticalAlignment="Center"/>
-                <Label Content="Number of Weeks" Margin="3.001,82.713,203.346,95.766" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="137.653"/>
-                <Button Command="{Binding UpdateCommand}" x:Name="BtnUpdate" Content="Update" Margin="9,166,203,15" Background="{x:Null}"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="132" Height="26" VerticalAlignment="Center" />
-                <Button x:Name="BtnFullCalendar" Content="Full Calendar" Margin="181,166,20,15" Background="{x:Null}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="143" Height="26" VerticalAlignment="Center"/>
-                <RadioButton  x:Name="rbSkipbreak" Content="Skip Breaks" Margin="181,124,33,63.589" GroupName="Breaks" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" HorizontalAlignment="Center" Width="130" Height="19" VerticalAlignment="Center"/>
-                <RadioButton  x:Name="rbNoskip" Content="Do Not Skip Breaks" Margin="6.001,124,179.872,63.589"  GroupName="Breaks" IsChecked="{Binding Source={x:Static p:Settings.Default}, Mode=TwoWay, Path=IncludeBreaks}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" HorizontalAlignment="Center" Width="158.127" Height="19" VerticalAlignment="Center"/>
-            </Grid>
-        </Viewbox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Border Margin="4">
             <Viewbox>
                 <Grid>
@@ -74,5 +50,9 @@
                 </Grid>
             </Viewbox>
         </Border>
+        <Viewbox Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="0"/>
+        </Viewbox>
+
     </Grid>
 </Window>
