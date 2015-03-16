@@ -1,4 +1,4 @@
-﻿<Window x:Class="Calendar_Converter.View.SemesterCalendar"
+﻿<Page x:Class="Calendar_Converter.View.SemesterCalendar"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -47,4 +47,4 @@
         </ScrollViewer>
 
     </Grid>
-</Window>
+</Page>

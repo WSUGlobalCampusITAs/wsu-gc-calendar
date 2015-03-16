@@ -75,16 +75,10 @@ namespace Calendar_Converter.ViewModel
             
         }
 
-
-        public Brush Color
-        {
-            get{return _color;}
-            private set { _color = value; }
-        }
-
         protected override void OnDispose()
         {
-            this.Days.Clear();
+            this.NewWeeks.Clear();
+            this.OldWeeks.Clear();
         }
     }
 }
