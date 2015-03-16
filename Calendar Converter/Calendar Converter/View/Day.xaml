@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
         <Rectangle Stroke="Black" Fill="#FFC9C9C9" Margin="0,0,0.0,0" Grid.Row="1" StrokeThickness="2"/>
         <Rectangle  Stroke="Black" Margin="0,0,0,0" StrokeThickness="2"  />
-        <TextBlock  Text="{Binding DayOfWeek}" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Lucida Sans Unicode" FontSize="11" Foreground="#FFEBEBEB" />
-        <TextBlock  Text="{Binding Date}"  TextAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="Black" Grid.Row="1"/>
+        <TextBlock  Text="{Binding DayOfWeek}" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Lucida Sans Unicode" FontSize="14" Foreground="#FFEBEBEB" />
+        <TextBlock  Text="{Binding Date}"  TextAlignment="Center" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Microsoft Sans Serif" FontSize="14" Foreground="Black" Grid.Row="1"/>
     </Grid>
 </UserControl>
