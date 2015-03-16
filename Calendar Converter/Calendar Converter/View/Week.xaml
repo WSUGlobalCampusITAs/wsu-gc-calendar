@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vw="clr-namespace:Calendar_Converter.View"
              xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
-             mc:Ignorable="d" Height="100" Width="560">
+             mc:Ignorable="d" >
     <UserControl.Resources>
         <ItemsPanelTemplate x:Key="WeekTemplate">
             <UniformGrid Columns="7"/>
@@ -14,12 +14,8 @@
             <vw:Day/>            
         </DataTemplate>
     </UserControl.Resources>
-    <Grid>
-        <Border BorderBrush="Black" Margin="2" >
-            <UniformGrid>
-                <ItemsControl  ItemsSource="{Binding Days}" ItemTemplate="{StaticResource DayDataTemplate}"                 
+    <UniformGrid Background="{Binding Color}" >
+        <ItemsControl  ItemsSource="{Binding Days}" ItemTemplate="{StaticResource DayDataTemplate}"                 
                           ItemsPanel="{StaticResource WeekTemplate}"/>
-            </UniformGrid>
-        </Border>
-    </Grid>
+    </UniformGrid>
 </UserControl>

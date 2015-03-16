@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Calendar_Converter.Properties;
+using System.Windows.Media;
 
 namespace Calendar_Converter.ViewModel
 {
     public class WeekViewModel : ViewModelBase
     {
         readonly SemesterLogic _semesters;
+        private Brush _color;
 
         public ObservableCollection<Day> Days
         {
@@ -34,8 +36,24 @@ namespace Calendar_Converter.ViewModel
             { OldOrNew = 1; }
 
             this.Days = new ObservableCollection<Day>(_semesters.Semesters[OldOrNew].Week(Settings.Default.CurrentWeek).Days);
+
+            if(IsOldWeek)
+            {
+                this.Color = Settings.Default.OldSemesterColor;
+            }
+            else
+            {
+                this.Color = Settings.Default.NewSemesterColor;
+            }
             
+
             
+        }
+
+        public Brush Color
+        {
+            get{return _color;}
+            private set { _color = value; }
         }
 
         protected override void OnDispose()

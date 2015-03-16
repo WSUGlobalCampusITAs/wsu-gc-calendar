@@ -118,5 +118,41 @@ namespace Calendar_Converter.Properties {
                 this["DateFormatString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FFDC143C")]
+        public global::System.Windows.Media.SolidColorBrush OldSemesterColor {
+            get {
+                return ((global::System.Windows.Media.SolidColorBrush)(this["OldSemesterColor"]));
+            }
+            set {
+                this["OldSemesterColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF808080")]
+        public global::System.Windows.Media.SolidColorBrush NewSemesterColor {
+            get {
+                return ((global::System.Windows.Media.SolidColorBrush)(this["NewSemesterColor"]));
+            }
+            set {
+                this["NewSemesterColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int SpringBreakWeekNum {
+            get {
+                return ((int)(this["SpringBreakWeekNum"]));
+            }
+            set {
+                this["SpringBreakWeekNum"] = value;
+            }
+        }
     }
 }

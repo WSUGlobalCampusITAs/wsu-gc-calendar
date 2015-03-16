@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Calendar_Converter.Model;
 using System.Collections.ObjectModel;
+using Calendar_Converter.Properties;
 
 namespace Calendar_Converter.DataAccess
 {
@@ -24,16 +25,33 @@ namespace Calendar_Converter.DataAccess
 
         public void NewSemesters(DateTime OldStart, DateTime NewStart, int Length, bool UseBreaks)
         {
+
             memSemesters = new List<Semester>();
             memSemesters.Add(Semester.CreateSemester(OldStart, Length, UseBreaks, PopulateWeeks(OldStart, Length, UseBreaks)));
 
             memSemesters.Add(Semester.CreateSemester(NewStart, Length, UseBreaks, PopulateWeeks(NewStart, Length, UseBreaks)));
+
+            for(int i = 0; i < Length - 1; i++)
+            {
+                if(memSemesters[0].Week(i).IsBreak)
+                {
+                    memSemesters[0].Weeks.Remove(memSemesters[0].Week(i));
+                }
+            }
+
+            for(int i = 0; i < Length; i++)
+            {
+                if(memSemesters[1].Week(i).IsBreak)
+                {
+                    memSemesters[0].Weeks.Insert(i, memSemesters[1].Week(i));
+                }
+            }
         }
 
         private List<Week> PopulateWeeks(DateTime Start, int Length, bool HasBreaks)
         {
             List<Week> Weeks = new List<Week>();
-            List<Break> Breaks = null;
+            List<Break> Breaks = new List<Break>();
 
             while (Start.DayOfWeek != DayOfWeek.Monday)
             {

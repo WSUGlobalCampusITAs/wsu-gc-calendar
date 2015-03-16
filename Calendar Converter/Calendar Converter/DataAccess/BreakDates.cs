@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Calendar_Converter.Model;
+using Calendar_Converter.Properties;
 
 namespace Calendar_Converter.DataAccess
 {
@@ -29,7 +30,7 @@ namespace Calendar_Converter.DataAccess
                 StartofSemester = StartofSemester.AddDays(1);
             }
 
-            SpringBreak = Break.CreateWeek(StartofSemester.AddDays(69), "Spring\nBreak");
+            SpringBreak = Break.CreateWeek(StartofSemester.AddDays((Settings.Default.SpringBreakWeekNum - 1) * 7), "Spring\nBreak");
             //To Calculate spring Break
             return SpringBreak;//11 weeks from start of year contains the week of spring break
         }

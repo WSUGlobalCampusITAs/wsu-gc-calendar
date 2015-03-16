@@ -42,11 +42,9 @@
             <RowDefinition Height="229*"/>
             <RowDefinition Height="274*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="4,4,4,50" BorderBrush="Black" BorderThickness="2">
-            <Viewbox Margin="4">
-                <ItemsControl ItemsSource="{Binding SingleWeek}" Margin="0,0,0,0"/>
+            <Viewbox Grid.Row="1" Grid.ColumnSpan="2" Margin="4,4,4,50">
+            <ItemsControl ItemsSource="{Binding SingleWeek}" Margin="0,0,0,0"/>
             </Viewbox>
-        </Border>
         <Viewbox Margin="4" Grid.Column="1">
             <Grid  Margin="0,0,0,0">
                 <DatePicker SelectedDate="{Binding Source={x:Static p:Settings.Default}, Mode=TwoWay, Path=OldStart}" x:Name="dtpickOldStart" Margin="178,15.768,10,161.291" Background="Transparent" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="156"/>

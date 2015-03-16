@@ -40,9 +40,13 @@ namespace Calendar_Converter.ViewModel
         public void Update(object obj)
         {
             _currentWeeks.Clear();
+            if (Settings.Default.IncludeBreaks)
+            {
+                Settings.Default.NumberOfWeeks++;
+            }
             _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, (int)Settings.Default.NumberOfWeeks, Settings.Default.IncludeBreaks);
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
             SingleWeek.Add(new WeekViewModel(_semesters, true));
+            SingleWeek.Add(new WeekViewModel(_semesters, false));
         }
 
         public ICommand UpdateCommand { get { return _updateCommand; } }

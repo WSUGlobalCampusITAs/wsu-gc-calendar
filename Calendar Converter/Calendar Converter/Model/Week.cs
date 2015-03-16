@@ -8,10 +8,13 @@ namespace Calendar_Converter.Model
         protected DateTime memStart;
         protected bool memisBreak;
         protected List<Day> _days;
+        protected int _background;
+        protected string memBreakName;
 
         public static Week CreateWeek(DateTime Start)
         {
-            return new Week { memStart = Start };
+            return new Week { memStart = Start, memisBreak = false, memBreakName = null };
+
         }
 
         public DateTime Start
@@ -35,10 +38,24 @@ namespace Calendar_Converter.Model
                     for(int i = 0; i < 7; i++)
                     {
                         _days.Add(new Day(memStart.AddDays(i)));
+                        if(memisBreak)
+                        {
+                            _days[i].Date = memBreakName;
+                        }
                     }
                 }
                 return _days;
             }
+        }
+
+        public int Color
+        {
+            get { return _background; }
+        }
+
+        public bool IsBreak
+        {
+            get { return memisBreak; }
         }
 
     }

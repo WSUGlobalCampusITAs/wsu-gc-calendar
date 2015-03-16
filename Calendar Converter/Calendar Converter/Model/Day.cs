@@ -10,10 +10,12 @@ namespace Calendar_Converter.Model
     public class Day
     {
         private DateTime _date;
+        private string output;
 
         public Day(DateTime Date)
         {
             _date = Date;
+            output = _date.GetDateTimeFormats()[Settings.Default.DateFormatString];
         }
 
         public string DayOfWeek
@@ -23,7 +25,8 @@ namespace Calendar_Converter.Model
 
         public string Date
         {
-            get { return _date.GetDateTimeFormats()[Settings.Default.DateFormatString]; }
+            get { return output; }
+            set { output = value; }
         }
     }
 }
