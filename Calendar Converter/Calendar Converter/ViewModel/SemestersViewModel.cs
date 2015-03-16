@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Calendar_Converter.ViewModel
 {
@@ -14,6 +15,7 @@ namespace Calendar_Converter.ViewModel
         readonly SemesterLogic _semesters;
         private ObservableCollection<ViewModelBase> _oldWeeks;
         private ObservableCollection<ViewModelBase> _newWeeks;
+        private readonly ICommand _closeCalendarCommand;
 
         public ObservableCollection<ViewModelBase> OldWeeks
         {
@@ -43,7 +45,9 @@ namespace Calendar_Converter.ViewModel
         }
 
         public SemestersViewModel(SemesterLogic Semesters)
-        {   
+        {
+            _closeCalendarCommand = new RelayCommand(CloseCalendar);
+
             if (Semesters == null)
             {
                 throw new ArgumentNullException("Semesters");
@@ -65,6 +69,8 @@ namespace Calendar_Converter.ViewModel
 
             weeks.Clear();
 
+            i = 0;
+
             foreach (Week _week in _semesters.Semesters[1].Weeks)
             {
                 weeks.Add(new WeekViewModel(_semesters, false, i));
@@ -75,10 +81,17 @@ namespace Calendar_Converter.ViewModel
             
         }
 
+        public void CloseCalendar(object obj)
+        {
+            this.OnPropertyChanged("FullCalendarClose");
+        }
+
         protected override void OnDispose()
         {
             this.NewWeeks.Clear();
             this.OldWeeks.Clear();
         }
+
+        public ICommand CloseCalendarCommand { get { return _closeCalendarCommand; } }
     }
 }

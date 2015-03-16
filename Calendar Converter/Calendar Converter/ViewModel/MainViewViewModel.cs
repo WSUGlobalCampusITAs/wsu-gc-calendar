@@ -20,7 +20,7 @@ namespace Calendar_Converter.ViewModel
         private readonly ICommand _updateCommand;
         private readonly ICommand _nextCommand;
         private readonly ICommand _previousCommand;
-       
+        private readonly ICommand _fullSemesterCommand;
 
         public MainViewViewModel(SemesterLogic Semesters)
         {
@@ -29,8 +29,10 @@ namespace Calendar_Converter.ViewModel
             _updateCommand = new RelayCommand(Update);
             _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < NumberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
+            _fullSemesterCommand = new RelayCommand(FullCalendar);
             
         }
+
 
         public ObservableCollection<ViewModelBase> SingleWeek
         {
@@ -76,10 +78,15 @@ namespace Calendar_Converter.ViewModel
             SingleWeek.Add(new WeekViewModel(_semesters, false));
         }
 
+        public void FullCalendar(object obj)
+        {
+            this.OnPropertyChanged("OpenFullCalendar");
+        }
         
 
         public ICommand UpdateCommand { get { return _updateCommand; } }
         public ICommand NextCommand { get { return _nextCommand; } }
         public ICommand PreviousCommand { get { return _previousCommand; } }
+        public ICommand FullSemesterCommand { get { return _fullSemesterCommand; } }
     }
 }

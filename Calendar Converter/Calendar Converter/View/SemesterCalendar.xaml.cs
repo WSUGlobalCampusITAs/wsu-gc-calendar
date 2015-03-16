@@ -18,7 +18,7 @@ namespace Calendar_Converter.View
     /// <summary>
     /// Interaction logic for SemesterCalendar.xaml
     /// </summary>
-    public partial class SemesterCalendar : Page
+    public partial class SemesterCalendar : UserControl
     {
         public SemesterCalendar()
         {
