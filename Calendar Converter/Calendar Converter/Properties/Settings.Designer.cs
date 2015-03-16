@@ -121,7 +121,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FFDC143C")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF981E32")]
         public global::System.Windows.Media.SolidColorBrush OldSemesterColor {
             get {
                 return ((global::System.Windows.Media.SolidColorBrush)(this["OldSemesterColor"]));
@@ -133,7 +133,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FF808080")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF02736D")]
         public global::System.Windows.Media.SolidColorBrush NewSemesterColor {
             get {
                 return ((global::System.Windows.Media.SolidColorBrush)(this["NewSemesterColor"]));

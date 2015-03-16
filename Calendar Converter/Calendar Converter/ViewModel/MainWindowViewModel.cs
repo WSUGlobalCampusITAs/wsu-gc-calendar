@@ -17,11 +17,15 @@ namespace Calendar_Converter.ViewModel
         ObservableCollection<ViewModelBase> _currentWeeks;
 
         private readonly ICommand _updateCommand;
+        private readonly ICommand _nextCommand;
+        private readonly ICommand _previousCommand;
 
         public MainWindowViewModel()
         {
             _semesters = new SemesterLogic();
             _updateCommand = new RelayCommand(Update);
+            _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < Settings.Default.NumberOfWeeks - 1));
+            _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
         }
 
         public ObservableCollection<ViewModelBase> SingleWeek
@@ -40,15 +44,31 @@ namespace Calendar_Converter.ViewModel
         public void Update(object obj)
         {
             _currentWeeks.Clear();
-            if (Settings.Default.IncludeBreaks)
-            {
-                Settings.Default.NumberOfWeeks++;
-            }
             _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, (int)Settings.Default.NumberOfWeeks, Settings.Default.IncludeBreaks);
+            Settings.Default.CurrentWeek = 0;
+            SingleWeek.Add(new WeekViewModel(_semesters, true));
+            SingleWeek.Add(new WeekViewModel(_semesters, false));
+        }
+
+        public void Next(object obj)
+        {
+            Settings.Default.CurrentWeek++;
+            _currentWeeks.Clear();
+            SingleWeek.Add(new WeekViewModel(_semesters, true));
+            SingleWeek.Add(new WeekViewModel(_semesters, false));
+
+        }
+
+        public void Previous(object obj)
+        {
+            Settings.Default.CurrentWeek--;
+            _currentWeeks.Clear();
             SingleWeek.Add(new WeekViewModel(_semesters, true));
             SingleWeek.Add(new WeekViewModel(_semesters, false));
         }
 
         public ICommand UpdateCommand { get { return _updateCommand; } }
+        public ICommand NextCommand { get { return _nextCommand; } }
+        public ICommand PreviousCommand { get { return _previousCommand; } }
     }
 }

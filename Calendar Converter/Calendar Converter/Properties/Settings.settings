@@ -27,10 +27,10 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="OldSemesterColor" Type="System.Windows.Media.SolidColorBrush" Scope="User">
-      <Value Profile="(Default)">#FFDC143C</Value>
+      <Value Profile="(Default)">#FF981E32</Value>
     </Setting>
     <Setting Name="NewSemesterColor" Type="System.Windows.Media.SolidColorBrush" Scope="User">
-      <Value Profile="(Default)">#FF808080</Value>
+      <Value Profile="(Default)">#FF02736D</Value>
     </Setting>
     <Setting Name="SpringBreakWeekNum" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
