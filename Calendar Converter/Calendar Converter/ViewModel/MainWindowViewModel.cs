@@ -17,6 +17,7 @@ namespace Calendar_Converter.ViewModel
         private List<ViewModelBase> _viewModels;
         private ViewModelBase _fullCalendar;
         private SemesterLogic _semesters;
+        private bool _isChecked;
 
 
         public MainWindowViewModel()
@@ -37,8 +38,11 @@ namespace Calendar_Converter.ViewModel
 
         private void CloseFullCalendar(MainWindowViewModel mainWindowViewModel)
         {
+            
             _currentViewModel.Clear();
             _currentViewModel.Add(_viewModels[0]);
+            Settings.Default.IncludeBreaks = _isChecked;
+            
         }
 
         public ObservableCollection<ViewModelBase> CurrentViewModel
@@ -48,6 +52,7 @@ namespace Calendar_Converter.ViewModel
 
         public void OpenFullCalendar(object obj)
         {
+            _isChecked = Settings.Default.IncludeBreaks;
             if (_fullCalendar == null)
             {
                 _fullCalendar = new SemestersViewModel(_semesters);
@@ -61,6 +66,7 @@ namespace Calendar_Converter.ViewModel
             _fullCalendar.PropertyChanged += _fullCalendar_PropertyChanged;
             _currentViewModel.Clear();
             _currentViewModel.Add(_fullCalendar);
+
         }
 
         void _fullCalendar_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

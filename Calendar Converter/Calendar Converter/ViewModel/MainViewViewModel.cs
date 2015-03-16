@@ -21,6 +21,7 @@ namespace Calendar_Converter.ViewModel
         private readonly ICommand _nextCommand;
         private readonly ICommand _previousCommand;
         private readonly ICommand _fullSemesterCommand;
+        private bool _breaksChecked;
 
         public MainViewViewModel(SemesterLogic Semesters)
         {
@@ -30,6 +31,7 @@ namespace Calendar_Converter.ViewModel
             _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < NumberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
             _fullSemesterCommand = new RelayCommand(FullCalendar);
+            _breaksChecked = Settings.Default.IncludeBreaks;
             
         }
 
@@ -82,7 +84,16 @@ namespace Calendar_Converter.ViewModel
         {
             this.OnPropertyChanged("OpenFullCalendar");
         }
-        
+
+        public bool BreaksChecked
+        {
+            get { return _breaksChecked; }
+            set 
+            { 
+                _breaksChecked = value;
+                Settings.Default.IncludeBreaks = value;
+            }
+        }
 
         public ICommand UpdateCommand { get { return _updateCommand; } }
         public ICommand NextCommand { get { return _nextCommand; } }
