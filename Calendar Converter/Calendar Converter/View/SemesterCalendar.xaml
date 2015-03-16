@@ -15,7 +15,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid Height="1000" Width="1600">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="20*"/>
@@ -29,8 +29,8 @@
         <TextBlock Text="Old Semester" FontSize="14" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock Text="New Semester" FontSize="14" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
         <Button Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Width="100" Content="Close" Command="{Binding CloseCalendarCommand}" Background="{x:Null}" Foreground="Wheat"/>
-        <ScrollViewer Grid.ColumnSpan="2" Grid.Row="3"  Margin="0,0,0,0">
-            <Grid>
+        
+            <Grid  Grid.ColumnSpan="2" Grid.Row="3"  Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -44,7 +44,7 @@
 
 
             </Grid>
-        </ScrollViewer>
+
 
     </Grid>
 </UserControl>

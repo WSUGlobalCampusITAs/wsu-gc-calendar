@@ -20,7 +20,7 @@
         xmlns:vw="clr-namespace:Calendar_Converter.View"
         xmlns:p="clr-namespace:Calendar_Converter.Properties"
         xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
-        Title="Calendar Converter" MinHeight="540" MinWidth="816" Height="550" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Calendar Converter" MinHeight="550" MinWidth="850" Height="550" Width="850" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:MainViewViewModel}">
             <vw:MainView />
@@ -53,9 +53,11 @@
                 </Grid>
             </Viewbox>
         </Border>
-        <Viewbox Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0">
-            <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="0"/>
-        </Viewbox>
+        <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Viewbox>
+                <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="4" ClipToBounds="True"/>
+            </Viewbox>
+        </ScrollViewer>
 
     </Grid>
 </Window>
