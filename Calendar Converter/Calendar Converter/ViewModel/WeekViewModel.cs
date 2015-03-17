@@ -19,11 +19,7 @@
 using Calendar_Converter.DataAccess;
 using Calendar_Converter.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Calendar_Converter.Properties;
 using System.Windows.Media;
 
@@ -31,17 +27,17 @@ namespace Calendar_Converter.ViewModel
 {
     public class WeekViewModel : ViewModelBase
     {
+        #region Member Variables
+
         readonly SemesterLogic _semesters;
         private Brush _color;
 
-        public ObservableCollection<Day> Days
-        {
-            get;
-            private set;
-        }
+        #endregion
+
+        #region Constructors
 
         public WeekViewModel(SemesterLogic Semesters, bool IsOldWeek)
-        {   
+        {
             if (Semesters == null)
             {
                 throw new ArgumentNullException("Semesters");
@@ -49,20 +45,20 @@ namespace Calendar_Converter.ViewModel
 
             _semesters = Semesters;
             int OldOrNew = 0;
-            
-            if(!IsOldWeek)
+
+            if (!IsOldWeek)
             { OldOrNew = 1; }
 
             this.Days = new ObservableCollection<Day>(_semesters.Semesters[OldOrNew].Week(Settings.Default.CurrentWeek).Days);
 
-            if(IsOldWeek)
+            if (IsOldWeek)
             {
                 this.Color = Settings.Default.OldSemesterColor;
             }
             else
             {
                 this.Color = Settings.Default.NewSemesterColor;
-            }   
+            }
         }
 
         public WeekViewModel(SemesterLogic Semesters, bool IsOldWeek, int WeekNumber)
@@ -87,19 +83,30 @@ namespace Calendar_Converter.ViewModel
             else
             {
                 this.Color = Settings.Default.NewSemesterColor;
-            }   
+            }
 
         }
+        #endregion
+
+        #region Properties
+
+        public ObservableCollection<Day> Days { get; private set; }
 
         public Brush Color
         {
-            get{return _color;}
+            get { return _color; }
             private set { _color = value; }
         }
+
+        #endregion
+
+        #region Member Methods
 
         protected override void OnDispose()
         {
             this.Days.Clear();
         }
+
+        #endregion
     }
 }

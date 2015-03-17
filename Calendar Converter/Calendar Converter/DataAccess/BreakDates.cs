@@ -24,8 +24,12 @@ using Calendar_Converter.Properties;
 
 namespace Calendar_Converter.DataAccess
 {
-    public class BreakDates
+    /// <summary>
+    /// This helper class provides methods for populating Break Data Models
+    /// </summary>
+    public static class BreakDates
     {
+        #region Member Methods
         public static List<Break> NewBreak(DateTime Year)
         {
             List<Break> Breaks = new List<Break>();
@@ -33,17 +37,21 @@ namespace Calendar_Converter.DataAccess
             Breaks.Add(SpringBreak(Year));
             Breaks.Add(FallBreak(Year));
 
-            return Breaks;    
+            return Breaks;
         }
 
+        /// <summary>
+        /// Method used for calculation of Spring Break.
+        /// </summary>
+        /// <param name="Year"></param>
+        /// <returns></returns>
         private static Break SpringBreak(DateTime Year)
         {
-            //Add database check later
             Break SpringBreak;
 
             DateTime StartofSemester = new DateTime(Year.Year, 1, 7); //Starting from the 1st possible semester Start
 
-            while(StartofSemester.DayOfWeek != DayOfWeek.Monday)
+            while (StartofSemester.DayOfWeek != DayOfWeek.Monday)
             {
                 StartofSemester = StartofSemester.AddDays(1);
             }
@@ -77,5 +85,6 @@ namespace Calendar_Converter.DataAccess
 
             return vacation;
         }
+        #endregion    
     }
 }

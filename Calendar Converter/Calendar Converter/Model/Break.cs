@@ -17,13 +17,23 @@
 //   Programming Lead       David Lystad
 
 using System;
-using System.Collections.Generic;
 
 
 namespace Calendar_Converter.Model
 {
+    /// <summary>
+    /// Break is the container class for Breaks
+    /// </summary>
     public class Break : Week
     {
+        /// <summary>
+        /// static Create Week creates an object of type Break, overriding the Week data. 
+        /// May in the future consider adding a Regular Week class, and changing the Week class to an
+        /// abstract class. 
+        /// </summary>
+        /// <param name="Start"></param>
+        /// <param name="BreakName"></param>
+        /// <returns></returns>
         public static Break CreateWeek(DateTime Start, string BreakName)
         {
             return new Break { memBreakName = BreakName, memStart = Start, memisBreak = true };

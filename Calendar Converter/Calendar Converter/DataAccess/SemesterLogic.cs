@@ -18,29 +18,46 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Calendar_Converter.Model;
-using System.Collections.ObjectModel;
-using Calendar_Converter.Properties;
 
 namespace Calendar_Converter.DataAccess
 {
+    /// <summary>
+    /// The SemesterLogic Class provides the repository used in displaying Semester Data within the Calendar Converter
+    /// </summary>
     public class SemesterLogic
     {
+        #region Member Variables
         private List<Semester> memSemesters;
+        #endregion
 
+        #region Constructors
         public SemesterLogic()
         {
             memSemesters = new List<Semester>();
         }
+        #endregion
 
+        #region Properties
         public List<Semester> Semesters
         {
             get { return memSemesters; }
         }
+        #endregion
 
+        #region Member Methods
+
+        /// <summary>
+        /// NewSemesters method populates the Semester database with the given variables.
+        /// This is accomplished by creating the individual semesters, and giving them their 
+        /// neccessary data. The included data is a method call to Populate Weeks. Following the creation
+        /// of the semesters, the weeks are modified to remove any breaks in the old semester, as well as add
+        /// break weeks from the new semester to the old one. 
+        /// </summary>
+        /// <param name="OldStart"></param>
+        /// <param name="NewStart"></param>
+        /// <param name="Length"></param>
+        /// <param name="UseBreaks"></param>
         public void NewSemesters(DateTime OldStart, DateTime NewStart, int Length, bool UseBreaks)
         {
             memSemesters = new List<Semester>();
@@ -67,6 +84,14 @@ namespace Calendar_Converter.DataAccess
             }
         }
 
+        /// <summary>
+        /// PopulateWeeks Method creates a collection of weeks, that can be passed to a semester data class given the appropriate
+        /// weeks for the given semester. This includes adding regular weeks, as well as adding any breaks. 
+        /// </summary>
+        /// <param name="Start"></param>
+        /// <param name="Length"></param>
+        /// <param name="HasBreaks"></param>
+        /// <returns></returns>
         private List<Week> PopulateWeeks(DateTime Start, int Length, bool HasBreaks)
         {
             List<Week> Weeks = new List<Week>();
@@ -101,5 +126,6 @@ namespace Calendar_Converter.DataAccess
 
             return Weeks;
         }
+        #endregion
     }
 }

@@ -21,19 +21,32 @@ using System.Collections.Generic;
 
 namespace Calendar_Converter.Model
 {
+    /// <summary>
+    /// Data Model for the Semester Week
+    /// Contains a collection of days, and various properties. 
+    /// </summary>
     public class Week
     {
+        #region Member Variables
+
         protected DateTime memStart;
         protected bool memisBreak;
         protected List<Day> _days;
-        protected int _background;
         protected string memBreakName;
+
+        #endregion
+
+        #region Constructors
 
         public static Week CreateWeek(DateTime Start)
         {
             return new Week { memStart = Start, memisBreak = false, memBreakName = null };
 
         }
+
+        #endregion
+
+        #region Properties
 
         public DateTime Start
         {
@@ -66,15 +79,11 @@ namespace Calendar_Converter.Model
             }
         }
 
-        public int Color
-        {
-            get { return _background; }
-        }
-
         public bool IsBreak
         {
             get { return memisBreak; }
         }
 
+        #endregion
     }
 }

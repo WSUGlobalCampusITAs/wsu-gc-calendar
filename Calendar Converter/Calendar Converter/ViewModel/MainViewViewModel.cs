@@ -19,29 +19,33 @@
 using Calendar_Converter.DataAccess;
 using Calendar_Converter.Properties;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Calendar_Converter.ViewModel
 {
+    /// <summary>
+    /// Main View View Model provides the data handling for the Main View, this includes
+    /// providing Observable Collections, as well as Command Properties
+    /// </summary>
     public class MainViewViewModel : ViewModelBase
     {
+        #region Member Variables
+
         readonly SemesterLogic _semesters;
-        ObservableCollection<ViewModelBase> _currentWeeks;
+        private ObservableCollection<ViewModelBase> _currentWeeks;
         private int _numberOfWeeks;
         private DateTime _oldStart;
         private DateTime _newStart;
-        
-
         private readonly ICommand _updateCommand;
         private readonly ICommand _nextCommand;
         private readonly ICommand _previousCommand;
         private readonly ICommand _fullSemesterCommand;
         private bool _breaksChecked;
+
+        #endregion
+
+        #region Constructors
 
         public MainViewViewModel(SemesterLogic Semesters)
         {
@@ -57,6 +61,11 @@ namespace Calendar_Converter.ViewModel
             
         }
 
+        #endregion 
+
+        #region Properties
+
+            #region Data
 
         public ObservableCollection<ViewModelBase> SingleWeek
         {
@@ -70,6 +79,68 @@ namespace Calendar_Converter.ViewModel
                 return _currentWeeks;
             }
         }
+
+        public bool BreaksChecked
+        {
+            get { return _breaksChecked; }
+            set
+            {
+                _breaksChecked = value;
+            }
+        }
+
+        public DateTime? OldDate
+        {
+            get
+            {
+                if (_oldStart == DateTime.MinValue)
+                {
+                    return null;
+                }
+                else
+                {
+                    return _oldStart as DateTime?;
+                }
+            }
+            set { _oldStart = (DateTime)value; }
+        }
+
+        public DateTime? NewDate
+        {
+            get
+            {
+                if (_newStart == DateTime.MinValue)
+                {
+                    return null;
+                }
+                else
+                {
+                    return _newStart as DateTime?;
+                }
+            }
+            set { _newStart = (DateTime)value; }
+        }
+
+        public int Weeks
+        {
+            get { return _numberOfWeeks; }
+            set { _numberOfWeeks = value; }
+        }
+
+            #endregion
+
+            #region Command
+
+        public ICommand UpdateCommand { get { return _updateCommand; } }
+        public ICommand NextCommand { get { return _nextCommand; } }
+        public ICommand PreviousCommand { get { return _previousCommand; } }
+        public ICommand FullSemesterCommand { get { return _fullSemesterCommand; } }
+
+            #endregion
+
+        #endregion
+
+        #region Member Methods
 
         public void Update(object obj)
         {
@@ -113,55 +184,6 @@ namespace Calendar_Converter.ViewModel
             this.OnPropertyChanged("OpenFullCalendar");
         }
 
-        public bool BreaksChecked
-        {
-            get { return _breaksChecked; }
-            set 
-            { 
-                _breaksChecked = value;
-            }
-        }
-
-        public DateTime? OldDate
-        {
-            get 
-            { 
-                if(_oldStart == DateTime.MinValue)
-                {
-                    return null;
-                }
-                else
-                {
-                    return _oldStart as DateTime?;
-                }
-            }
-            set { _oldStart = (DateTime)value; }
-        }
-
-        public DateTime? NewDate
-        {
-            get
-            {
-                if (_newStart == DateTime.MinValue)
-                {
-                    return null;
-                }
-                else
-                {
-                    return _newStart as DateTime?;
-                }
-            }
-            set { _newStart = (DateTime)value; }
-        }
-
-        public int Weeks
-        {
-            get { return _numberOfWeeks; }
-            set { _numberOfWeeks = value; }
-        }
-        public ICommand UpdateCommand { get { return _updateCommand; } }
-        public ICommand NextCommand { get { return _nextCommand; } }
-        public ICommand PreviousCommand { get { return _previousCommand; } }
-        public ICommand FullSemesterCommand { get { return _fullSemesterCommand; } }
+        #endregion  
     }
 }

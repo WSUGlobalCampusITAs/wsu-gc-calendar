@@ -21,6 +21,10 @@ using System.ComponentModel;
 
 namespace Calendar_Converter.ViewModel
 {
+    /// <summary>
+    /// Base class for all project View Models
+    /// Provides interface elements for INotify, and IDisposable
+    /// </summary>
     public class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;

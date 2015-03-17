@@ -15,24 +15,28 @@
 //   Supervisor             Celisse Ellis
 //   Design Lead            David Lystad
 //   Programming Lead       David Lystad
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calendar_Converter.Model
 {
     public class Semester
     {
-        //Member Variables
+        #region Member Variables
+        
         private DateTime memSemesterStart;
         private int memSemLength;
         private bool memHasBreak;
         private List<Week> memSemWeeks;
 
+        #endregion
+
+        #region Constructors
+        
         /// <summary>
         /// Create Semester returns a new Semester Object for use with the given parameters
+        /// This is used in lieu of an actual constructor
         /// </summary>
         /// <param name="Start"></param>
         /// <param name="Length"></param>
@@ -42,6 +46,10 @@ namespace Calendar_Converter.Model
         {
             return new Semester { memSemesterStart = Start, memSemLength = Length, memHasBreak = HasBreak, memSemWeeks = Weeks};
         }
+
+        #endregion
+
+        #region Properties
 
         public DateTime Start
         { get { return memSemesterStart; } }
@@ -62,6 +70,8 @@ namespace Calendar_Converter.Model
             get { return memSemWeeks; }
             set { memSemWeeks = value; }
         }
+
+        #endregion
 
     }
 }

@@ -17,34 +17,45 @@
 //   Programming Lead       David Lystad
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Calendar_Converter.Properties;
 
 namespace Calendar_Converter.Model
 {
+    /// <summary>
+    /// Day class provides the lowest level object for the Semester Repository
+    /// </summary>
     public class Day
     {
+        #region Member Variables
+
         private DateTime _date;
-        private string output;
+        private string _output;
+
+        #endregion
+
+        #region Constructors
 
         public Day(DateTime Date)
         {
             _date = Date;
-            output = _date.GetDateTimeFormats()[Settings.Default.DateFormatString];
+            _output = _date.GetDateTimeFormats()[Settings.Default.DateFormatString];
         }
+
+        #endregion
+
+        #region Properties
 
         public string DayOfWeek
         {
             get { return _date.DayOfWeek.ToString(); }
         }
 
-        public string Date
+        public string Date //The Date Property provides a set feature to allow the string to changed to a BreakName if necessary. 
         {
-            get { return output; }
-            set { output = value; }
+            get { return _output; }
+            set { _output = value; }
         }
+
+        #endregion
     }
 }
