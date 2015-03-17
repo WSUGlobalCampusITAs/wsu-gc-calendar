@@ -1,4 +1,6 @@
-﻿using System;
+﻿//The following Code is referenced from MSDN article found on Relay Command https://msdn.microsoft.com/en-us/magazine/dd419663.aspx
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
