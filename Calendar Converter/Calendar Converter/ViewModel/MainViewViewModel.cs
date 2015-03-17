@@ -53,9 +53,9 @@ namespace Calendar_Converter.ViewModel
         {
             _currentWeeks.Clear();
             NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            if(Settings.Default.IncludeBreaks)
+            if(_breaksChecked)
             {
-                NumberOfWeeks++;
+                    NumberOfWeeks++;
             }
             _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, NumberOfWeeks, Settings.Default.IncludeBreaks);
             Settings.Default.CurrentWeek = 0;

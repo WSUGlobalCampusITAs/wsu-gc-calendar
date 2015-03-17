@@ -14,7 +14,6 @@ namespace Calendar_Converter.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private ObservableCollection<ViewModelBase> _currentViewModel;
-        private List<ViewModelBase> _viewModels;
         private ViewModelBase _fullCalendar;
         private SemesterLogic _semesters;
         private bool _isChecked;
@@ -25,8 +24,6 @@ namespace Calendar_Converter.ViewModel
             _semesters = new SemesterLogic();
             _currentViewModel = new ObservableCollection<ViewModelBase>();
             _currentViewModel.Add(new MainViewViewModel(_semesters));
-            _viewModels = new List<ViewModelBase>();
-            _viewModels.Add(_currentViewModel[0]); //Starting View Model is the Main View, which also takes the 0 spot in the ViewModel List
             _fullCalendar = null;
             _currentViewModel[0].PropertyChanged += MainWindowViewModel_PropertyChanged;
         }
@@ -40,7 +37,7 @@ namespace Calendar_Converter.ViewModel
         {
             
             _currentViewModel.Clear();
-            _currentViewModel.Add(_viewModels[0]);
+            _currentViewModel.Add(new MainViewViewModel(_semesters));
             Settings.Default.IncludeBreaks = _isChecked;
             
         }
@@ -53,16 +50,8 @@ namespace Calendar_Converter.ViewModel
         public void OpenFullCalendar(object obj)
         {
             _isChecked = Settings.Default.IncludeBreaks;
-            if (_fullCalendar == null)
-            {
-                _fullCalendar = new SemestersViewModel(_semesters);
-                _viewModels.Add(_fullCalendar);
-            }
-            else
-            {
-                _fullCalendar = new SemestersViewModel(_semesters);
-                _viewModels[1] = _fullCalendar; //_viewModels index 1 will be the permanent position for _fullCalendar
-            }
+           
+            _fullCalendar = new SemestersViewModel(_semesters);
             _fullCalendar.PropertyChanged += _fullCalendar_PropertyChanged;
             _currentViewModel.Clear();
             _currentViewModel.Add(_fullCalendar);

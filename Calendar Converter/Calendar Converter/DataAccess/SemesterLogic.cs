@@ -31,19 +31,21 @@ namespace Calendar_Converter.DataAccess
 
             memSemesters.Add(Semester.CreateSemester(NewStart, Length, UseBreaks, PopulateWeeks(NewStart, Length, UseBreaks)));
 
-            for(int i = 0; i < Length - 1; i++)
+            for (int i = 0; i < Length; i++)
             {
-                if(memSemesters[0].Week(i).IsBreak)
+                if (memSemesters[0].Week(i).IsBreak)
                 {
                     memSemesters[0].Weeks.Remove(memSemesters[0].Week(i));
+                    memSemesters[0].Weeks.Add(Week.CreateWeek(memSemesters[0].Weeks[memSemesters[0].Weeks.Count - 1].End.AddDays(1))); //Adds week to end to replace the missing week. 
                 }
             }
 
-            for(int i = 0; i < Length; i++)
+            for (int i = 0; i < Length; i++)
             {
-                if(memSemesters[1].Week(i).IsBreak)
+                if (memSemesters[1].Week(i).IsBreak)
                 {
                     memSemesters[0].Weeks.Insert(i, memSemesters[1].Week(i));
+                    memSemesters[0].Weeks.Remove(memSemesters[0].Weeks[memSemesters[0].Weeks.Count - 1]);   //Removes week off the end to keep the count consistent
                 }
             }
         }
