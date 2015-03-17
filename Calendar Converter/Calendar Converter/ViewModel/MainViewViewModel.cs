@@ -14,7 +14,9 @@ namespace Calendar_Converter.ViewModel
     {
         readonly SemesterLogic _semesters;
         ObservableCollection<ViewModelBase> _currentWeeks;
-        private int NumberOfWeeks;
+        private int _numberOfWeeks;
+        private DateTime _oldStart;
+        private DateTime _newStart;
         
 
         private readonly ICommand _updateCommand;
@@ -26,9 +28,11 @@ namespace Calendar_Converter.ViewModel
         public MainViewViewModel(SemesterLogic Semesters)
         {
             _semesters = Semesters;
-            NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
+            _numberOfWeeks = (int)Settings.Default.NumberOfWeeks;
+            _oldStart = Settings.Default.OldStart;
+            _newStart = Settings.Default.NewStart;
             _updateCommand = new RelayCommand(Update, new Predicate<object>(i => (OldDate != null) && (NewDate != null)));
-            _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < NumberOfWeeks - 1));
+            _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < _numberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
             _fullSemesterCommand = new RelayCommand(FullCalendar, new Predicate<object>(i=> (_semesters.Semesters.Count > 1)));
             _breaksChecked = Settings.Default.IncludeBreaks;
@@ -52,15 +56,15 @@ namespace Calendar_Converter.ViewModel
         public void Update(object obj)
         {
             _currentWeeks.Clear();
-            NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
+            int i = 0;
             if(_breaksChecked)
             {
-                    NumberOfWeeks++;
+                    i++;
             }
 
             if ((OldDate != null) && (NewDate != null))
             {
-                _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, NumberOfWeeks, Settings.Default.IncludeBreaks);
+                _semesters.NewSemesters(_oldStart, _newStart, _numberOfWeeks + i, _breaksChecked);
                 Settings.Default.CurrentWeek = 0;
                 SingleWeek.Add(new WeekViewModel(_semesters, true));
                 SingleWeek.Add(new WeekViewModel(_semesters, false));
@@ -97,7 +101,6 @@ namespace Calendar_Converter.ViewModel
             set 
             { 
                 _breaksChecked = value;
-                Settings.Default.IncludeBreaks = value;
             }
         }
 
@@ -105,32 +108,38 @@ namespace Calendar_Converter.ViewModel
         {
             get 
             { 
-                if(Settings.Default.OldStart == DateTime.MinValue)
+                if(_oldStart == DateTime.MinValue)
                 {
                     return null;
                 }
                 else
                 {
-                    return Settings.Default.OldStart as DateTime?;
+                    return _oldStart as DateTime?;
                 }
             }
-            set { Settings.Default.OldStart = (DateTime)value; }
+            set { _oldStart = (DateTime)value; }
         }
 
         public DateTime? NewDate
         {
             get
             {
-                if (Settings.Default.NewStart == DateTime.MinValue)
+                if (_newStart == DateTime.MinValue)
                 {
                     return null;
                 }
                 else
                 {
-                    return Settings.Default.NewStart as DateTime?;
+                    return _newStart as DateTime?;
                 }
             }
-            set { Settings.Default.NewStart = (DateTime)value; }
+            set { _newStart = (DateTime)value; }
+        }
+
+        public int Weeks
+        {
+            get { return _numberOfWeeks; }
+            set { _numberOfWeeks = value; }
         }
         public ICommand UpdateCommand { get { return _updateCommand; } }
         public ICommand NextCommand { get { return _nextCommand; } }

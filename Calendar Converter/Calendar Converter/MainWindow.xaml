@@ -20,13 +20,16 @@
         xmlns:vw="clr-namespace:Calendar_Converter.View"
         xmlns:p="clr-namespace:Calendar_Converter.Properties"
         xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
-        Title="Calendar Converter" MinHeight="550" MinWidth="850" Height="550" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Calendar Converter" Height="600" Width="850" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:MainViewViewModel}">
             <vw:MainView />
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:SemestersViewModel}">
             <vw:SemesterCalendar />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <vw:SettingsView />
         </DataTemplate>
     </Window.Resources>
     <Window.Background>
@@ -45,6 +48,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Border Margin="4">
             <Viewbox>
                 <Grid>
@@ -53,11 +57,15 @@
                 </Grid>
             </Viewbox>
         </Border>
-        <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 20, 0, 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <Viewbox>
                 <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="4" ClipToBounds="True"/>
             </Viewbox>
         </ScrollViewer>
-
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding SettingsCommand}" Height="20" Width="20" Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="favicon.ico"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
