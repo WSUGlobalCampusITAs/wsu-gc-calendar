@@ -13,35 +13,21 @@ namespace Calendar_Converter.ViewModel
     public class SemestersViewModel : ViewModelBase
     {
         readonly SemesterLogic _semesters;
-        private ObservableCollection<ViewModelBase> _oldWeeks;
-        private ObservableCollection<ViewModelBase> _newWeeks;
+        private ObservableCollection<ViewModelBase> _weeks;
         private readonly ICommand _closeCalendarCommand;
 
-        public ObservableCollection<ViewModelBase> OldWeeks
+        public ObservableCollection<ViewModelBase> Weeks
         {
             get
             {
-                if (_oldWeeks == null)
+                if (_weeks == null)
                 {
-                    _oldWeeks = new ObservableCollection<ViewModelBase>();
+                    _weeks = new ObservableCollection<ViewModelBase>();
                     
                 }
-                return _oldWeeks;
+                return _weeks;
             }
-            private set { _oldWeeks = value; }
-        }
-
-        public ObservableCollection<ViewModelBase> NewWeeks
-        {
-            get
-            {
-                if (_newWeeks == null)
-                {
-                    _newWeeks = new ObservableCollection<ViewModelBase>();
-                }
-                return _newWeeks;
-            }
-            private set { _newWeeks = value; }
+            private set { _weeks = value; }
         }
 
         public SemestersViewModel(SemesterLogic Semesters)
@@ -53,6 +39,7 @@ namespace Calendar_Converter.ViewModel
                 throw new ArgumentNullException("Semesters");
             }
 
+            
             _semesters = Semesters;
 
             List<ViewModelBase> weeks = new List<ViewModelBase>();
@@ -62,23 +49,11 @@ namespace Calendar_Converter.ViewModel
             foreach(Week _week in _semesters.Semesters[0].Weeks)
             {
                 weeks.Add(new WeekViewModel(_semesters, true, i));
-                i++;
-            }
-
-            this.OldWeeks = new ObservableCollection<ViewModelBase>(weeks);
-
-            weeks.Clear();
-
-            i = 0;
-
-            foreach (Week _week in _semesters.Semesters[1].Weeks)
-            {
                 weeks.Add(new WeekViewModel(_semesters, false, i));
                 i++;
             }
 
-            this.NewWeeks = new ObservableCollection<ViewModelBase>(weeks);
-            
+            this.Weeks = new ObservableCollection<ViewModelBase>(weeks);
         }
 
         public void CloseCalendar(object obj)
@@ -88,8 +63,7 @@ namespace Calendar_Converter.ViewModel
 
         protected override void OnDispose()
         {
-            this.NewWeeks.Clear();
-            this.OldWeeks.Clear();
+            this.Weeks.Clear();
         }
 
         public ICommand CloseCalendarCommand { get { return _closeCalendarCommand; } }

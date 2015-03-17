@@ -25,7 +25,6 @@ namespace Calendar_Converter.DataAccess
 
         public void NewSemesters(DateTime OldStart, DateTime NewStart, int Length, bool UseBreaks)
         {
-
             memSemesters = new List<Semester>();
             memSemesters.Add(Semester.CreateSemester(OldStart, Length, UseBreaks, PopulateWeeks(OldStart, Length, UseBreaks)));
 

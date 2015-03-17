@@ -27,10 +27,10 @@ namespace Calendar_Converter.ViewModel
         {
             _semesters = Semesters;
             NumberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            _updateCommand = new RelayCommand(Update);
+            _updateCommand = new RelayCommand(Update, new Predicate<object>(i => (OldDate != null) && (NewDate != null)));
             _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < NumberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
-            _fullSemesterCommand = new RelayCommand(FullCalendar);
+            _fullSemesterCommand = new RelayCommand(FullCalendar, new Predicate<object>(i=> (_semesters.Semesters.Count > 1)));
             _breaksChecked = Settings.Default.IncludeBreaks;
             
         }
@@ -57,10 +57,16 @@ namespace Calendar_Converter.ViewModel
             {
                     NumberOfWeeks++;
             }
-            _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, NumberOfWeeks, Settings.Default.IncludeBreaks);
-            Settings.Default.CurrentWeek = 0;
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
+
+            if ((OldDate != null) && (NewDate != null))
+            {
+                _semesters.NewSemesters(Settings.Default.OldStart, Settings.Default.NewStart, NumberOfWeeks, Settings.Default.IncludeBreaks);
+                Settings.Default.CurrentWeek = 0;
+                SingleWeek.Add(new WeekViewModel(_semesters, true));
+                SingleWeek.Add(new WeekViewModel(_semesters, false));
+            }
+            
+            
         }
 
         public void Next(object obj)
@@ -95,6 +101,37 @@ namespace Calendar_Converter.ViewModel
             }
         }
 
+        public DateTime? OldDate
+        {
+            get 
+            { 
+                if(Settings.Default.OldStart == DateTime.MinValue)
+                {
+                    return null;
+                }
+                else
+                {
+                    return Settings.Default.OldStart as DateTime?;
+                }
+            }
+            set { Settings.Default.OldStart = (DateTime)value; }
+        }
+
+        public DateTime? NewDate
+        {
+            get
+            {
+                if (Settings.Default.NewStart == DateTime.MinValue)
+                {
+                    return null;
+                }
+                else
+                {
+                    return Settings.Default.NewStart as DateTime?;
+                }
+            }
+            set { Settings.Default.NewStart = (DateTime)value; }
+        }
         public ICommand UpdateCommand { get { return _updateCommand; } }
         public ICommand NextCommand { get { return _nextCommand; } }
         public ICommand PreviousCommand { get { return _previousCommand; } }
