@@ -33,7 +33,7 @@ namespace Calendar_Converter.ViewModel
     {
         #region Member Variables
 
-        readonly SemesterLogic _semesters;
+        private SemesterLogic _semesters;
         private ObservableCollection<ViewModelBase> _currentWeeks;
         private int _numberOfWeeks;
         private DateTime _oldStart;
@@ -47,6 +47,18 @@ namespace Calendar_Converter.ViewModel
         #endregion
 
         #region Constructors
+        public MainViewViewModel()
+        {
+            _semesters = new SemesterLogic();
+            _numberOfWeeks = (int)Settings.Default.NumberOfWeeks;
+            _oldStart = Settings.Default.OldStart;
+            _newStart = Settings.Default.NewStart;
+            _updateCommand = new RelayCommand(Update, new Predicate<object>(i => (OldDate != null) && (NewDate != null)));
+            _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < _numberOfWeeks - 1));
+            _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
+            _fullSemesterCommand = new RelayCommand(FullCalendar, new Predicate<object>(i => (_semesters.Semesters.Count > 1)));
+            _breaksChecked = Settings.Default.IncludeBreaks;
+        }
 
         public MainViewViewModel(SemesterLogic Semesters)
         {
