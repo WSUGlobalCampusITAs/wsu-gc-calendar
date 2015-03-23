@@ -76,6 +76,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MVVMObjectLibrary">
+      <HintPath>..\..\..\MVVMObjectLibrary\MVVMObjectLibrary\MVVMObjectLibrary\bin\Debug\MVVMObjectLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,10 +104,8 @@
     <Compile Include="Model\Week.cs" />
     <Compile Include="ViewModel\MainViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\SemestersViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WeekViewModel.cs" />
     <Compile Include="View\Controls.xaml.cs">
       <DependentUpon>Controls.xaml</DependentUpon>

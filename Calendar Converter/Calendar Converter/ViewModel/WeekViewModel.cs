@@ -22,6 +22,7 @@ using System;
 using System.Collections.ObjectModel;
 using Calendar_Converter.Properties;
 using System.Windows.Media;
+using MVVMObjectLibrary;
 
 namespace Calendar_Converter.ViewModel
 {

@@ -20,6 +20,7 @@ using System.Collections.ObjectModel;
 using Calendar_Converter.DataAccess;
 using System.Windows.Input;
 using Calendar_Converter.Properties;
+using MVVMObjectLibrary;
 
 namespace Calendar_Converter.ViewModel
 {

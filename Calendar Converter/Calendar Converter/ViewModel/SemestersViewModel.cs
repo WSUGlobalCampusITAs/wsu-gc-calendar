@@ -18,6 +18,7 @@
 
 using Calendar_Converter.DataAccess;
 using Calendar_Converter.Model;
+using MVVMObjectLibrary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

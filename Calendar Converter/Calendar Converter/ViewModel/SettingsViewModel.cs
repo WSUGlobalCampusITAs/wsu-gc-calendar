@@ -17,6 +17,7 @@
 //   Programming Lead       David Lystad
 
 using Calendar_Converter.Properties;
+using MVVMObjectLibrary;
 using System.Windows.Input;
 
 namespace Calendar_Converter.ViewModel
