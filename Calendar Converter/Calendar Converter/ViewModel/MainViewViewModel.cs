@@ -51,8 +51,18 @@ namespace Calendar_Converter.ViewModel
         {
             _semesters = new SemesterLogic();
             _numberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            _oldStart = Settings.Default.OldStart;
-            _newStart = Settings.Default.NewStart;
+
+            if (Settings.Default.OldStart != null)
+            {
+                _oldStart = Settings.Default.OldStart;
+                _newStart = Settings.Default.NewStart;
+            }
+            else
+            {
+                _oldStart = new DateTime();
+                _newStart = new DateTime();
+            }
+
             _updateCommand = new RelayCommand(Update, new Predicate<object>(i => (OldDate != null) && (NewDate != null)));
             _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < _numberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
@@ -64,8 +74,16 @@ namespace Calendar_Converter.ViewModel
         {
             _semesters = Semesters;
             _numberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            _oldStart = Settings.Default.OldStart;
-            _newStart = Settings.Default.NewStart;
+            if (Settings.Default.OldStart != null)
+            {
+                _oldStart = Settings.Default.OldStart;
+                _newStart = Settings.Default.NewStart;
+            }
+            else
+            {
+                _oldStart = new DateTime();
+                _newStart = new DateTime();
+            }
             _updateCommand = new RelayCommand(Update, new Predicate<object>(i => (OldDate != null) && (NewDate != null)));
             _nextCommand = new RelayCommand(Next, new Predicate<object>(i => Settings.Default.CurrentWeek < _numberOfWeeks - 1));
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
