@@ -74,12 +74,12 @@ namespace Calendar_Converter.ViewModel
         {
             _semesters = Semesters;
             _numberOfWeeks = (int)Settings.Default.NumberOfWeeks;
-            if (Settings.Default.OldStart != null)
+            try
             {
                 _oldStart = Settings.Default.OldStart;
                 _newStart = Settings.Default.NewStart;
             }
-            else
+            catch (NullReferenceException)
             {
                 _oldStart = new DateTime();
                 _newStart = new DateTime();
