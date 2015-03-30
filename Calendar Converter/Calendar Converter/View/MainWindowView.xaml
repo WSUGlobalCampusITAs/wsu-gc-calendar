@@ -30,10 +30,7 @@ Height="600" Width="850">
         </Grid.ColumnDefinitions>
         <Border Margin="4">
             <Viewbox>
-                <Grid>
-                    <TextBlock Text="Calendar Converter" FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,60,0,-1"/>
-                    <Image Source="Resources/wsu-globalcampus-signature-primary.png" Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Left" Height="71" Width="283" Margin="20,0,0,0"/>
-                </Grid>
+                <TextBlock Text="Calendar Converter" FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" />
             </Viewbox>
         </Border>
         <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 20, 0, 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -42,7 +39,5 @@ Height="600" Width="850">
                 <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="4" ClipToBounds="True"/>
             </Viewbox>
         </ScrollViewer>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding SettingsCommand}" Height="20" Width="20" Content="">
-        </Button>
     </Grid>
 </UserControl>
