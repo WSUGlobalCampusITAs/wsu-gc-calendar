@@ -6,10 +6,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="OldStart" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2000-01-01</Value>
     </Setting>
     <Setting Name="NewStart" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">2000-01-01</Value>
     </Setting>
     <Setting Name="IncludeBreaks" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

@@ -58,6 +58,7 @@ namespace Calendar_Converter.ViewModel
             _currentViewModel.Add(_mainView);
             _currentViewModel[0].PropertyChanged += MainWindowViewModel_PropertyChanged;
             _settingsCommand = new RelayCommand(SettingsViewShow);
+            Settings.Default.Reload();
         }
     #endregion
 

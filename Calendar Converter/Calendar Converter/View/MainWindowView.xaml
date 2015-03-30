@@ -43,9 +43,6 @@ Height="600" Width="850">
             </Viewbox>
         </ScrollViewer>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding SettingsCommand}" Height="20" Width="20" Content="">
-            <Button.Background>
-                <ImageBrush ImageSource="favicon.ico"/>
-            </Button.Background>
         </Button>
     </Grid>
 </UserControl>
