@@ -10,8 +10,11 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	>
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type vm:WeekViewModel}">
-            <vw:Week />
+            <ItemsPanelTemplate x:Key="WeekTemplate">
+                <StackPanel/>
+            </ItemsPanelTemplate>
+        <DataTemplate x:Key="DayDataTemplate">
+            <vw:Week/>
         </DataTemplate>
     </UserControl.Resources>
 
@@ -32,7 +35,7 @@
 
         <Grid  Grid.ColumnSpan="2" Grid.Row="3"  Margin="0">
             <Border Margin="0,0,0,0" BorderBrush="Black" BorderThickness="1">
-                    <ItemsControl ItemsSource="{Binding Weeks}"/>
+                <ItemsControl ItemsSource="{Binding Weeks}" ItemTemplate="{StaticResource DayDataTemplate}" ItemsPanel="{StaticResource WeekTemplate}"/>
                 </Border>
                 
 

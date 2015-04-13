@@ -42,7 +42,7 @@ namespace Calendar_Converter.ViewModel
     {
 
     #region Member Variables
-        private ObservableCollection<ViewModelBase> _currentViewModel;
+        private ViewModelBase _currentViewModel;
         private SemesterLogic _semesters;
         private ViewModelBase _mainView;
         private bool _isChecked;
@@ -54,9 +54,8 @@ namespace Calendar_Converter.ViewModel
         {
             _semesters = new SemesterLogic();
             _mainView = new MainViewViewModel(_semesters);
-            _currentViewModel = new ObservableCollection<ViewModelBase>();
-            _currentViewModel.Add(_mainView);
-            _currentViewModel[0].PropertyChanged += MainWindowViewModel_PropertyChanged;
+            _currentViewModel = _mainView;
+            _currentViewModel.PropertyChanged += MainWindowViewModel_PropertyChanged;
             _settingsCommand = new RelayCommand(SettingsViewShow);
             Settings.Default.Reload();
         }
@@ -102,15 +101,16 @@ namespace Calendar_Converter.ViewModel
         /// The CurrentViewModel Property provides the data for the MainWindow that allows the various User Controls to 
         /// be populated, and displayed. 
         /// </summary>
-        public ObservableCollection<ViewModelBase> CurrentViewModel
+        public ViewModelBase CurrentViewModel
         {
             get { return _currentViewModel; }
+            set
+            {
+                _currentViewModel = value;
+                OnPropertyChanged("CurrentViewModel");
+            }
         }
 
-        /// <summary>
-        /// Command Property for the Settings Button
-        /// </summary>
-        public ICommand SettingsCommand { get { return _settingsCommand; } }
     #endregion
 
     #region Member Methods
@@ -121,23 +121,20 @@ namespace Calendar_Converter.ViewModel
         /// <param name="mainWindowViewModel"></param>
         private void CloseFullCalendar(MainWindowViewModel mainWindowViewModel)
         {        
-            _currentViewModel.Clear();
-            _currentViewModel.Add(_mainView);
+            this.CurrentViewModel = _mainView;
             Settings.Default.IncludeBreaks = _isChecked;
         }        
 
         private void OpenFullCalendar(object obj)
         {
-            _currentViewModel.Clear();
-            _currentViewModel.Add(new SemestersViewModel(_semesters));
-            _currentViewModel[0].PropertyChanged += FullCalendar_PropertyChanged;
+            this.CurrentViewModel = new SemestersViewModel(_semesters);
+           this.CurrentViewModel.PropertyChanged += FullCalendar_PropertyChanged;
         }
   
         private void SettingsViewShow(object obj)
         {
-            _currentViewModel.Clear();
-            _currentViewModel.Add(new SettingsViewModel());
-            _currentViewModel[0].PropertyChanged+=SettingsViewHide;
+            this.CurrentViewModel = new SettingsViewModel();
+            this.CurrentViewModel.PropertyChanged += SettingsViewHide;
         }
 
         /// <summary>
@@ -146,7 +143,6 @@ namespace Calendar_Converter.ViewModel
         /// </summary>
         protected override void OnDispose()
         {
-            this.CurrentViewModel.Clear();
         }
         #endregion
     

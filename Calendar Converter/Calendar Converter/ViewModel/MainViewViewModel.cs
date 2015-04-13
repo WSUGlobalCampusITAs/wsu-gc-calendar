@@ -35,6 +35,8 @@ namespace Calendar_Converter.ViewModel
 
         private SemesterLogic _semesters;
         private ObservableCollection<ViewModelBase> _currentWeeks;
+        private ViewModelBase _newWeek;
+        private ViewModelBase _oldWeek;
         private int _numberOfWeeks;
         private DateTime _oldStart;
         private DateTime _newStart;
@@ -68,6 +70,7 @@ namespace Calendar_Converter.ViewModel
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
             _fullSemesterCommand = new RelayCommand(FullCalendar, new Predicate<object>(i => (_semesters.Semesters.Count > 1)));
             _breaksChecked = Settings.Default.IncludeBreaks;
+            Update(this);
         }
 
         public MainViewViewModel(SemesterLogic Semesters)
@@ -89,7 +92,7 @@ namespace Calendar_Converter.ViewModel
             _previousCommand = new RelayCommand(Previous, new Predicate<object>(i => Settings.Default.CurrentWeek > 0));
             _fullSemesterCommand = new RelayCommand(FullCalendar, new Predicate<object>(i=> (_semesters.Semesters.Count > 1)));
             _breaksChecked = Settings.Default.IncludeBreaks;
-            
+            Update(this);
         }
 
         #endregion 
@@ -98,16 +101,23 @@ namespace Calendar_Converter.ViewModel
 
             #region Data
 
-        public ObservableCollection<ViewModelBase> SingleWeek
+        public ViewModelBase OldWeek
         {
-            get
+            get { return _oldWeek; }
+            set 
+            { 
+                _oldWeek = value;
+                OnPropertyChanged("OldWeek");
+            }
+        }
+
+        public ViewModelBase NewWeek
+        {
+            get { return _newWeek; }
+            set
             {
-                if(_currentWeeks == null)
-                {
-                    _currentWeeks = new ObservableCollection<ViewModelBase>();             
-                    Update(this);
-                }
-                return _currentWeeks;
+                _newWeek = value;
+                OnPropertyChanged("NewWeek");
             }
         }
 
@@ -175,7 +185,6 @@ namespace Calendar_Converter.ViewModel
 
         public void Update(object obj)
         {
-            _currentWeeks.Clear();
             int i = 0;
             if(_breaksChecked)
             {
@@ -186,8 +195,8 @@ namespace Calendar_Converter.ViewModel
             {
                 _semesters.NewSemesters(_oldStart, _newStart, _numberOfWeeks + i, _breaksChecked);
                 Settings.Default.CurrentWeek = 0;
-                SingleWeek.Add(new WeekViewModel(_semesters, true));
-                SingleWeek.Add(new WeekViewModel(_semesters, false));
+                this.OldWeek = new WeekViewModel(_semesters, true);
+                this.NewWeek = new WeekViewModel(_semesters, false);
             }
             
             
@@ -196,18 +205,16 @@ namespace Calendar_Converter.ViewModel
         public void Next(object obj)
         {
             Settings.Default.CurrentWeek++;
-            _currentWeeks.Clear();
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
+            this.OldWeek = new WeekViewModel(_semesters, true);
+            this.NewWeek = new WeekViewModel(_semesters, false);
 
         }
 
         public void Previous(object obj)
         {
             Settings.Default.CurrentWeek--;
-            _currentWeeks.Clear();
-            SingleWeek.Add(new WeekViewModel(_semesters, true));
-            SingleWeek.Add(new WeekViewModel(_semesters, false));
+            this.OldWeek = new WeekViewModel(_semesters, true);
+            this.NewWeek = new WeekViewModel(_semesters, false);
         }
 
         public void FullCalendar(object obj)

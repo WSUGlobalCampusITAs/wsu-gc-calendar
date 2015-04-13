@@ -3,16 +3,21 @@
         xmlns:s="clr-namespace:System;assembly=mscorlib" 
         xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
         xmlns:vw="clr-namespace:Calendar_Converter.View"
         xmlns:p="clr-namespace:Calendar_Converter.Properties"
-        xmlns:vm="clr-namespace:Calendar_Converter.ViewModel">
+        xmlns:vm="clr-namespace:Calendar_Converter.ViewModel" 
+             d:DesignHeight="600" 
+             d:DesignWidth="700">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:WeekViewModel}">
             <vw:Week />
         </DataTemplate>
     </UserControl.Resources>
-    <Grid Margin="0,0,2,1" Height="500" Width="800">
+    <Grid Margin="0,0,2,1" >
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="193*"/>
             <ColumnDefinition Width="186*"/>
@@ -22,30 +27,34 @@
             <RowDefinition Height="114*"/>
             <RowDefinition Height="27*"/>
         </Grid.RowDefinitions>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2" Grid.Column="1" >
-            <Button x:Name="btnNext" Content="Next" Command="{Binding NextCommand}"  Background="#FF02736D"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16" Width="150"/>
-        </Viewbox>
-        <Viewbox Margin="10,10,10,10" Grid.Row="2">
-            <Button x:Name="btnPrevious" Width="150" Content="Previous" Command="{Binding PreviousCommand}" Background="#FF981E32"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16"/>
-        </Viewbox>
-        <Border BorderBrush="Black" BorderThickness=".1" Grid.Row="1" Grid.ColumnSpan="2" Margin="4,4,4,4">
-            <Viewbox   MaxHeight="400" >
-                 <ItemsControl ItemsSource="{Binding SingleWeek}" Margin="0,0,0,0"/>
-            </Viewbox>
+        <Border Margin="4" Grid.ColumnSpan="2">
+            <TextBlock Text="Calendar Converter" FontFamily="Century Schoolbook" FontStretch="Normal" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="18" />
         </Border>
-        <Viewbox Margin="4" Grid.Column="1">
-            <Grid  Margin="0,0,0,0">
-                <DatePicker SelectedDate="{Binding OldDate}" x:Name="dtpickOldStart" Margin="178,15.768,10,161.291" Background="Transparent" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="156"/>
-                <DatePicker SelectedDate="{Binding NewDate}" Margin="178,50,10,125.589" FontFamily="Times New Roman" BorderBrush="{x:Null}" Grid.Column="1" HorizontalAlignment="Center" Width="156" Height="31" VerticalAlignment="Center"/>
-                <Label Content="Old Start Date" Margin="3.001,10.481,239.472,166.578" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="29.53" VerticalAlignment="Center" HorizontalAlignment="Center" Width="101.527"/>
-                <Label Content="New Start Date" Margin="3.001,44.713,222.899,133.766"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="118.1"/>
-                <TextBox x:Name="txtbxNumWeeks" Margin="181,91,137,96.589" TextAlignment="Center" FontFamily="Times New Roman" Grid.Column="1" Text="{Binding Weeks}" HorizontalAlignment="Center" Width="26" Height="19" VerticalAlignment="Center"/>
-                <Label Content="Number of Weeks" Margin="3.001,82.713,203.346,95.766" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Grid.Column="1" Height="28.11" VerticalAlignment="Center" HorizontalAlignment="Center" Width="137.653"/>
-                <Button Command="{Binding UpdateCommand}" x:Name="BtnUpdate" Content="Update" Margin="9,166,203,15" Background="{x:Null}"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="132" Height="26" VerticalAlignment="Center" />
-                <Button x:Name="BtnFullCalendar" Command="{Binding FullSemesterCommand}" Content="Full Calendar" Margin="181,166,20,15" Background="{x:Null}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="143" Height="26" VerticalAlignment="Center"/>
-                <CheckBox   Margin="181,133,5,55"  IsChecked="{Binding BreaksChecked}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Center" Width="158" Height="19" VerticalAlignment="Center"/>
-                <Label Content="Breaks" Margin="3,124,203,55" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center" Width="138"/>
+        <Button Margin="10,10,10,10" Grid.Row="2" Grid.Column="1" x:Name="btnNext" Content="Next" Command="{Binding NextCommand}"  Background="#FF02736D"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16" Width="150"/>
+        <Button x:Name="btnPrevious" Width="150" Content="Previous" Command="{Binding PreviousCommand}" Background="#FF981E32"  Foreground="#FFE7EBE4" FontFamily="Lucida Sans Unicode" FontSize="16" Margin="10,10,10,10" Grid.Row="2"/>
+
+        <Border BorderBrush="Black" BorderThickness=".1" Grid.Row="1" Grid.ColumnSpan="2" Margin="4,4,4,4">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ContentControl Content="{Binding OldWeek}" />
+                <ContentControl Content="{Binding NewWeek}" Grid.Row="1"/>
             </Grid>
-        </Viewbox>
+        </Border>
+
+
+        <DatePicker SelectedDate="{Binding OldDate}" x:Name="dtpickOldStart" Margin="199,76,0,167" Background="Transparent" FontFamily="Times New Roman" BorderBrush="{x:Null}" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="156"/>
+        <DatePicker SelectedDate="{Binding NewDate}" Margin="177,78,10,164" FontFamily="Times New Roman" BorderBrush="{x:Null}" HorizontalAlignment="Center" Width="156" Height="31" VerticalAlignment="Center" Grid.Column="1"/>
+        <Label Content="Old Start Date" Margin="25,71,214,172" FontFamily="Calibri" FontSize="18" Foreground="#FFEBEBEB" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Width="116"/>
+        <Label Content="New Start Date" Margin="19,73,202,172"  FontFamily="Calibri" FontSize="18" Foreground="#FFEBEBEB" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center" Width="122" Grid.Column="1"/>
+        <TextBox x:Name="txtbxNumWeeks" Margin="177,124,140,130" TextAlignment="Center" FontFamily="Times New Roman" Text="{Binding Weeks}" HorizontalAlignment="Center" Width="26" Height="19" VerticalAlignment="Center" Grid.Column="1"/>
+        <Label Content="Number of Weeks" Margin="19,115,180,130" FontFamily="Calibri" FontSize="18" Foreground="#FFEBEBEB" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center" Width="144" Grid.Column="1"/>
+        <Button Command="{Binding UpdateCommand}" x:Name="BtnUpdate" Content="Update" Margin="10,219,10,28" Background="{x:Null}"  FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="335" Height="26" VerticalAlignment="Center" />
+        <Button x:Name="BtnFullCalendar" Command="{Binding FullSemesterCommand}" Grid.Column="1" Content="Full Calendar" Margin="10,219,10,28" Background="{x:Null}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" BorderBrush="Black" BorderThickness="0.1" HorizontalAlignment="Center" Width="323" Height="26" VerticalAlignment="Center"/>
+        <CheckBox   Margin="203,124,0,130"  IsChecked="{Binding BreaksChecked}" FontFamily="Calibri" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Center" Width="152" Height="19" VerticalAlignment="Center"/>
+        <Label Content="Breaks" Margin="25,115,192,130" FontFamily="Calibri" FontSize="18" Foreground="#FFEBEBEB" Height="28" VerticalAlignment="Center" HorizontalAlignment="Center" Width="138"/>
+
     </Grid>
 </UserControl>

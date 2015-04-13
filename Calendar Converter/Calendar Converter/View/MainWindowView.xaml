@@ -7,7 +7,7 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://sc
 xmlns:vw="clr-namespace:Calendar_Converter.View"
 xmlns:p="clr-namespace:Calendar_Converter.Properties"
 xmlns:vm="clr-namespace:Calendar_Converter.ViewModel"
-Height="600" Width="850">
+d:DesignHeight="600" d:DesignWidth="850">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:MainViewViewModel}">
             <vw:MainView />
@@ -28,16 +28,6 @@ Height="600" Width="850">
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Margin="4">
-            <Viewbox>
-                <TextBlock Text="Calendar Converter" FontFamily="Century Schoolbook" FontSize="16" Foreground="#FFEBEBEB" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" />
-            </Viewbox>
-        </Border>
-        <ScrollViewer Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 20, 0, 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <!-- Viewbox control is used here to allow resizing of UserControl without changing all of the variables. This allows for dynamic resizing. -->
-            <Viewbox>
-                <ItemsControl ItemsSource="{Binding CurrentViewModel}" Margin="4" ClipToBounds="True"/>
-            </Viewbox>
-        </ScrollViewer>
+        <ContentControl Content="{Binding CurrentViewModel}" ClipToBounds="True" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0, 20, 0, 0"/>
     </Grid>
 </UserControl>
