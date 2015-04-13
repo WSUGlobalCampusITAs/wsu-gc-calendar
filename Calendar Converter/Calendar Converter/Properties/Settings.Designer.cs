@@ -37,7 +37,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-12")]
         public global::System.DateTime OldStart {
             get {
                 return ((global::System.DateTime)(this["OldStart"]));
@@ -49,7 +49,7 @@ namespace Calendar_Converter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2015-08-24")]
         public global::System.DateTime NewStart {
             get {
                 return ((global::System.DateTime)(this["NewStart"]));
