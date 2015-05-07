@@ -34,13 +34,14 @@
         <Button Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" Width="100" Content="Close" Command="{Binding CloseCalendarCommand}" Background="{x:Null}" Foreground="Wheat"/>
 
         <Grid  Grid.ColumnSpan="2" Grid.Row="3"  Margin="0">
-            <Border Margin="0,0,0,0" BorderBrush="Black" BorderThickness="1">
-                <ItemsControl ItemsSource="{Binding Weeks}" ItemTemplate="{StaticResource DayDataTemplate}" ItemsPanel="{StaticResource WeekTemplate}"/>
+            <ScrollViewer>
+                <Border Margin="5" BorderBrush="Black" BorderThickness="1">
+                    <ItemsControl ItemsSource="{Binding Weeks}" ItemTemplate="{StaticResource DayDataTemplate}" ItemsPanel="{StaticResource WeekTemplate}"/>
                 </Border>
-                
+            </ScrollViewer>
 
 
-            </Grid>
+        </Grid>
 
 
     </Grid>
