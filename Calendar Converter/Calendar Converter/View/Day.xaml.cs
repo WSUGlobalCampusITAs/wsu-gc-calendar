@@ -24,5 +24,16 @@ namespace Calendar_Converter.View
         {
             InitializeComponent();
         }
+
+        private void TextBlock_MouseMove(object sender, MouseEventArgs e)
+        {
+            TextBlock item = sender as TextBlock;
+            if (item != null && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragDrop.DoDragDrop(item,
+                                    item.Text,
+                                     DragDropEffects.Copy);
+            }
+        }
     }
 }
